@@ -213,6 +213,39 @@ undefined
 */
 ````
 
+- **Funcion Flecha (Arrow Function)**
+
+Una función de flecha es una forma concisa de escribir una expresión de función. Es una sintaxis abreviada que te permite definir una función sin utilizar la palabra clave `function`.
+
+Aquí hay un desglose del código:
+
+```js
+const verificarNumero = (numero) => { return !isNaN(numero) };
+```
+
+- `const verificarNumero`: Esto declara una variable constante llamada `verificarNumero`.
+- `(numero)`: Esto es la lista de parámetros, que define el parámetro de entrada `numero`.
+- `=>`: Esto es el símbolo de flecha, que separa la lista de parámetros del cuerpo de la función.
+- `{ return !isNaN(numero) }`: Esto es el cuerpo de la función, que devuelve un valor booleano que indica si el parámetro `numero` es un número o no.
+
+La función de flecha es equivalente a la siguiente expresión de función tradicional:
+
+```js
+const verificarNumero = function(numero) {
+	return !isNaN(numero);
+}
+```
+
+Sin embargo, la sintaxis de la función de flecha es más concisa y expresiva, lo que la hace una opción popular para definir funciones pequeñas y de una sola línea.
+
+Algunos beneficios clave de las funciones de flecha incluyen:
+
+- **Sintaxis concisa**: Las funciones de flecha son más breves y fáciles de leer que las expresiones de función tradicionales.
+- **Devuelve implícito**: Si el cuerpo de la función es una sola expresión, la palabra clave `return` se implícita, lo que hace que el código sea aún más conciso.
+- **`this` léxico**: Las funciones de flecha heredan el contexto `this` de su ámbito circundante, lo que puede simplificar el código y reducir errores.
+
+En general, las funciones de flecha son una característica poderosa y flexible en JavaScript, y se utilizan ampliamente en el desarrollo de JavaScript moderno.
+
 - **Documentacion**
 
 
@@ -1057,9 +1090,13 @@ console.log(myArray);
 
 ````js
 // myArray.splice(start, deleteCount, item1, item2, ...)
+// [ 'Carlos', 'Ribas', 'Carlos', 'Alberto', 'Ribas' ]
 myArray.splice(1, 2, "Nueva entrada")
 console.log(myArray)
 // [ 'Carlos', 'Nueva entrada', 'Alberto', 'Ribas' ]
+myArray.splice(1, 0, "Nueva entrada")
+console.log(myArray)
+// [ 'Carlos', "Nueva entrada",'Nueva entrada', 'Alberto', 'Ribas' ]
 ````
 
 `start`: Es el índice donde se iniciará la modificación del array. Puede ser un número positivo o negativo. Si es negativo, se cuenta desde el final del array.
@@ -1074,13 +1111,26 @@ console.log(myArray)
 // [ 'Carlos', 'Alberto', 'Ribas' ]
 console.log(myArray.length)
 // 3
-
 ````
 
 ##### **2. Métodos de búsqueda y filtro**
 
 - `indexOf()`: Busca la posición de un elemento en el arreglo y devuelve su índice.
+
+````js
+// [ 'Carlos', 'Ribas', 'Carlos', 'Alberto', 'Ribas' ]
+console.log(nombres.indexOf('Carlos'))
+// 0
+````
+
 - `includes()`: Verifica si un elemento está incluido en el arreglo y devuelve un booleano.
+
+````js
+// [ 'Carlos', 'Ribas', 'Carlos', 'Alberto', 'Ribas' ]
+console.log(nombres.includes('Carlos'))
+// true
+````
+
 - `find()`: Busca el primer elemento que cumpla con una condición y lo devuelve.
 - `findIndex()`: Busca la posición del primer elemento que cumpla con una condición y devuelve su índice.
 - `filter()`: Crea un nuevo arreglo con los elementos que cumplen con una condición.
@@ -1125,6 +1175,144 @@ console.log(myNewArray); // [ 'alberto', 'ribas' ]
 
 ### Objetos
 
+**¿Qué es un objeto en JavaScript?**
+
+En JavaScript, un objeto (object) es una colección de propiedades (llamadas también atributos o campos) y métodos que se utilizan para describir y manipular un conjunto de datos. Un objeto es una instancia de una clase, y cada objeto tiene sus propias propiedades y métodos que lo definen.
+
+Un objeto en JavaScript se puede crear de varias maneras:
+
+- Utilizando la sintaxis de objeto literal: 
+
+````js
+let persona = { 
+    nombre: 'Juan', 
+    edad: 30 
+}
+````
+
+- Utilizando el constructor `Object`: 
+
+````js
+let persona = new Object(); 
+persona.nombre = 'Juan'; 
+persona.edad = 30;
+````
+
+- Utilizando una función constructora: 
+
+````js
+function Persona(nombre, edad) { 
+    this.nombre = nombre; 
+    this.edad = edad; 
+} 
+let persona = new Persona('Juan', 30);
+````
+
+**Propiedades de un objeto**
+
+Las propiedades de un objeto son pares clave-valor que se utilizan para describir los atributos del objeto. Las propiedades se pueden acceder utilizando la notación de punto (`.`) o la notación de corchetes (`[]`).
+
+Ejemplo:
+
+```js
+const persona = { 
+    nombre: 'Juan', 
+    edad: 30 
+};
+console.log(persona.nombre); // "Juan"
+console.log(persona['edad']); // 30
+```
+
+**Métodos de un objeto**
+
+Los métodos de un objeto son funciones que se utilizan para manipular y interactuar con el objeto. Los métodos se definen como propiedades del objeto que contienen una función.
+
+Ejemplo:
+
+```js
+const persona = {
+  	nombre: 'Juan',
+  	edad: 30,
+  	saludar: function() {
+    console.log(`Hola, soy ${this.nombre}`)
+	}
+}
+persona.saludar(); // "Hola, soy Juan"
+```
+
+#### Array de objetos
+
+un array de objetos es una colección de objetos que se almacenan en una sola variable. Cada objeto dentro del array tiene sus propias propiedades y valores, y se puede acceder a ellos utilizando un índice o clave.
+
+Un array de objetos se declara de la siguiente manera:
+
+```js
+const miArray = [
+	{ nombre: "Juan", edad: 25 },
+	{ nombre: "María", edad: 30 },
+	{ nombre: "Pedro", edad: 35 }
+]
+```
+
+En este ejemplo, `miArray` es un array que contiene tres objetos. Cada objeto tiene dos propiedades: `nombre` y `edad`.
+
+Para acceder a un objeto específico dentro del array, se utiliza el índice del objeto. Por ejemplo, para acceder al primer objeto del array, se utiliza el índice 0:
+
+```js
+console.log(miArray[0]); // { nombre: "Juan", edad: 25 }
+```
+
+Para acceder a una propiedad específica de un objeto dentro del array, se utiliza la notación de punto. Por ejemplo, para acceder a la propiedad `nombre` del primer objeto del array, se utiliza la siguiente sintaxis:
+
+```js
+console.log(miArray[0].nombre); // "Juan"
+```
+
+Los arrays de objetos son muy útiles en JavaScript porque permiten almacenar y manipular grandes cantidades de datos de manera eficiente. Algunos ejemplos de uso de arrays de objetos incluyen:
+
+- Almacenar información de usuarios en una aplicación web
+- Representar una lista de productos en una tienda en línea
+- Guardar información de una base de datos en una aplicación móvil
+
+Algunas operaciones comunes que se pueden realizar con arrays de objetos en JavaScript incluyen:
+
+- Agregar un nuevo objeto al array utilizando el método `push()`
+- Eliminar un objeto del array utilizando el método `splice()`
+- Buscar un objeto específico dentro del array utilizando el método `find()`
+- Filtrar los objetos del array utilizando el método `filter()`
+- Ordenar los objetos del array utilizando el método `sort()`
+
+**Métodos built-in de JavaScript**
+
+JavaScript proporciona varios métodos built-in (integrados) que se pueden utilizar con objetos. Algunos de los métodos más comunes son:
+
+- `toString()`: devuelve una representación de cadena del objeto.
+- `valueOf()`: devuelve el valor primitivo del objeto.
+- `hasOwnProperty(prop)`: devuelve `true` si el objeto tiene una propiedad propia con el nombre especificado.
+- `isPrototypeOf(obj)`: devuelve `true` si el objeto es el prototipo de otro objeto.
+- `propertyIsEnumerable(prop)`: devuelve `true` si la propiedad es enumerable.
+
+**Métodos de objetos específicos**
+
+Además de los métodos built-in, cada objeto en JavaScript tiene sus propios métodos específicos que dependen del tipo de objeto. Por ejemplo:
+
+- Array:
+  - `push()`: agrega un elemento al final del array.
+  - `pop()`: elimina el último elemento del array.
+  - `indexOf()`: devuelve el índice del primer elemento que coincide con el valor especificado.
+- String:
+  - `toUpperCase()`: devuelve una copia del string en mayúsculas.
+  - `toLowerCase()`: devuelve una copia del string en minúsculas.
+  - `trim()`: elimina los espacios en blanco del principio y del final del string.
+- Date:
+  - `getFullYear()`: devuelve el año del objeto Date.
+  - `getMonth()`: devuelve el mes del objeto Date (0-11).
+  - `getDate()`: devuelve el día del mes del objeto Date.
+
+Estos son solo algunos ejemplos de los métodos que se pueden utilizar con objetos en JavaScript. Hay muchos más, y cada objeto tiene sus propias características y métodos específicos.
+
+#### Iterar
+
 En JavaScript, existen varias formas de iterar sobre arrays, objetos y otros tipos de datos utilizando los siguientes métodos:
 
 1. `for...in`
@@ -1134,7 +1322,7 @@ En JavaScript, existen varias formas de iterar sobre arrays, objetos y otros tip
 
 A continuación, se presentan las diferencias entre cada uno de ellos:
 
-**1. `for...in`**
+##### **1. `for...in`**
 
 El bucle `for...in` itera sobre las propiedades de un objeto, devolviendo el nombre de la propiedad en cada iteración.
 
@@ -1144,7 +1332,7 @@ Ejemplo:
 
 ```js
 const persona = { nombre: 'Juan', edad: 30, ciudad: 'Madrid' };
-for (var propiedad in persona) {
+for (let propiedad in persona) {
   console.log(propiedad + ': ' + persona[propiedad]);
 }
 // Output:
@@ -1163,7 +1351,7 @@ for (var propiedad in persona) {
 - No garantiza el orden de iteración.
 - No es compatible con iterables (como arrays o strings).
 
-**2. `for...of`**
+##### **2. `for...of`**
 
 El bucle `for...of` itera sobre los valores de un iterable (como un array, un string o un objeto que implemente la interfaz `Iterable`), devolviendo el valor en cada iteración.
 
@@ -1193,7 +1381,7 @@ for (var fruta of frutas) {
 - No devuelve el nombre de la propiedad en cada iteración.
 - No es compatible con objetos que no implementan la interfaz `Iterable`.
 
-**3. `forEach()`**
+##### **3. `forEach()`**
 
 El método `forEach()` itera sobre un array o un objeto que implemente la interfaz `Iterable`, ejecutando una función callback para cada elemento.
 
@@ -1222,7 +1410,7 @@ frutas.forEach(function(fruta) {
 - No devuelve el nombre de la propiedad en cada iteración.
 - No es compatible con objetos que no implementan la interfaz `Iterable`.
 
-**4. `for...each` (no es un método nativo)**
+##### **4. `for...each` (no es un método nativo)**
 
 El bucle `for...each` no es un método nativo de JavaScript, pero se puede implementar utilizando otros métodos. Por ejemplo, utilizando `for...in` y `Object.keys()`:
 
@@ -1249,7 +1437,7 @@ for (var propiedad in persona) {
 - No garantiza el orden de iteración.
 - No es compatible con iterables que no son objetos.
 
-**5. `for await`**
+##### **5. `for await`**
 
 El  `for await` es una variante del bucle `for` que se utiliza específicamente para iterar sobre iterables asíncronos, como promesas o generadores asíncronos.
 
@@ -1424,73 +1612,67 @@ La estructura de datos `Map` es parte del estándar ECMAScript 2015 (ES6) y es c
 
 Puedes crear un `Map` utilizando la palabra clave `new` y el constructor `Map`:
 
-```
-EditCopy code
-1const miMapa = new Map();
+```js
+const miMapa = new Map();
 ```
 
 **Agregar pares clave-valor**
 
 Puedes agregar pares clave-valor a un `Map` utilizando el método `set()`:
 
-```
-EditCopy code1miMapa.set('nombre', 'Juan');
-2miMapa.set('edad', 30);
+```js
+miMapa.set('nombre', 'Juan');
+miMapa.set('edad', 30);
 ```
 
 **Obtener valores**
 
 Puedes obtener un valor de un `Map` utilizando el método `get()`:
 
-```
-EditCopy code
-1const nombre = miMapa.get('nombre'); // devuelve "Juan"
+```js
+const nombre = miMapa.get('nombre'); // devuelve "Juan"
 ```
 
 **Verificar si una clave existe**
 
 Puedes verificar si una clave existe en un `Map` utilizando el método `has()`:
 
-```
-EditCopy code
-1const tieneNombre = miMapa.has('nombre'); // devuelve true
+```js
+const tieneNombre = miMapa.has('nombre'); // devuelve true
 ```
 
 **Eliminar pares clave-valor**
 
 Puedes eliminar un par clave-valor de un `Map` utilizando el método `delete()`:
 
-```
-EditCopy code
-1miMapa.delete('edad');
+```js
+miMapa.delete('edad');
 ```
 
 **Iterar sobre un Map**
 
 Puedes iterar sobre un `Map` utilizando el método `forEach()`:
 
-```
-EditCopy code1miMapa.forEach((valor, clave) => {
-2  console.log(`${clave}: ${valor}`);
-3});
+```js
+miMapa.forEach((valor, clave) => {
+	console.log(`${clave}: ${valor}`);
+});
 ```
 
 **Convertir un Map a un arreglo**
 
 Puedes convertir un `Map` a un arreglo utilizando el método `Array.from()`:
 
-```
-EditCopy code
-1const miArreglo = Array.from(miMapa);
+```js
+const miArreglo = Array.from(miMapa);
 ```
 
 **Convertir un Map a un objeto**
 
 Puedes convertir un `Map` a un objeto utilizando el método `Object.fromEntries()`:
 
-```
-EditCopy code
-1const miObjeto = Object.fromEntries(miMapa);
+```js
+const miObjeto = Object.fromEntries(miMapa);
 ```
 
 **Casos de uso**
@@ -1505,73 +1687,67 @@ La estructura de datos `Map` es parte del estándar ECMAScript 2015 (ES6) y es c
 
 Puedes crear un `Map` utilizando la palabra clave `new` y el constructor `Map`:
 
-```
-EditCopy code
-1const miMapa = new Map();
+```js
+const miMapa = new Map();
 ```
 
 **Agregar pares clave-valor**
 
 Puedes agregar pares clave-valor a un `Map` utilizando el método `set()`:
 
-```
-EditCopy code1miMapa.set('nombre', 'Juan');
-2miMapa.set('edad', 30);
+```js
+miMapa.set('nombre', 'Juan');
+miMapa.set('edad', 30);
 ```
 
 **Obtener valores**
 
 Puedes obtener un valor de un `Map` utilizando el método `get()`:
 
-```
-EditCopy code
-1const nombre = miMapa.get('nombre'); // devuelve "Juan"
+```js
+const nombre = miMapa.get('nombre'); // devuelve "Juan"
 ```
 
 **Verificar si una clave existe**
 
 Puedes verificar si una clave existe en un `Map` utilizando el método `has()`:
 
-```
-EditCopy code
-1const tieneNombre = miMapa.has('nombre'); // devuelve true
+```js
+const tieneNombre = miMapa.has('nombre'); // devuelve true
 ```
 
 **Eliminar pares clave-valor**
 
 Puedes eliminar un par clave-valor de un `Map` utilizando el método `delete()`:
 
-```
-EditCopy code
-1miMapa.delete('edad');
+```js
+miMapa.delete('edad');
 ```
 
 **Iterar sobre un Map**
 
 Puedes iterar sobre un `Map` utilizando el método `forEach()`:
 
-```
-EditCopy code1miMapa.forEach((valor, clave) => {
-2  console.log(`${clave}: ${valor}`);
-3});
+```js
+miMapa.forEach((valor, clave) => {
+	console.log(`${clave}: ${valor}`);
+});
 ```
 
 **Convertir un Map a un arreglo**
 
 Puedes convertir un `Map` a un arreglo utilizando el método `Array.from()`:
 
-```
-EditCopy code
-1const miArreglo = Array.from(miMapa);
+```js
+const miArreglo = Array.from(miMapa);
 ```
 
 **Convertir un Map a un objeto**
 
 Puedes convertir un `Map` a un objeto utilizando el método `Object.fromEntries()`:
 
-```
-EditCopy code
-1const miObjeto = Object.fromEntries(miMapa);
+```js
+const miObjeto = Object.fromEntries(miMapa);
 ```
 
 **Casos de uso**
