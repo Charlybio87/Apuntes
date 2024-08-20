@@ -58,9 +58,9 @@ La sentencia alert() mostrará una ventana sobre la página web que estemos acce
 alert("¡Hola Coder!"); 
 ````
 
-### Términos empleados
+### Términos
 
-- **Declaración**
+#### **Declaración**
 
 Es un componente esencial que permite al programa realizar acciones específicas. A través de las declaraciones, se establecen reglas, asignan valores y se ejecutan operaciones fundamentales para el correcto funcionamiento del código.
 
@@ -77,7 +77,7 @@ function showMessage() {
 }
 ````
 
-- **Inicialización**
+#### **Inicialización**
 
 En el contexto de la informática, **inicialización** se refiere al proceso de establecer los valores iniciales para la ejecución de un programa.
 
@@ -88,7 +88,7 @@ const dev = `Desarrollador`;
 const nac = `15/02/1987`;
 ````
 
-- **Reasignación**
+#### **Reasignación**
 
 Se refiere a cambiar el valor de una variable después de haberla inicializado previamente. Cuando reasignas una variable, le asignas un nuevo valor, sobrescribiendo el valor anterior.
 
@@ -98,7 +98,7 @@ x = 10;    // Reasignación: ahora x tiene el valor 10
 
 ````
 
-- **Hoisting**
+#### **Hoisting**
 
 Permite usar funciones y variables antes de que se hayan declarado. Imagina el siguiente código:
 
@@ -109,7 +109,7 @@ var foo = 'foo';
 
 Aunque `foo` se asigna después de la línea `console.log`, este código genera `undefined` en lugar de un error. ¿Por qué? Porque el intérprete de JavaScript **mueve** las declaraciones al principio de su ámbito antes de ejecutar el código. A esto se le llama hoisting.
 
-- **Scope**
+#### **Scope**
 
 Se refiere al alcance o visibilidad de las variables dentro de tu código. Básicamente, determina en qué partes del código una variable es accesible y cuánto tiempo vive.
 
@@ -213,7 +213,62 @@ undefined
 */
 ````
 
-- **Funcion Flecha (Arrow Function)**
+#### **Funcion**
+
+Una función es un bloque de código que se puede ejecutar varias veces desde diferentes partes del programa. Las funciones son una forma de organizar y reutilizar el código, lo que hace que el programa sea más eficiente y fácil de mantener.
+
+Es un bloque de código que se puede ejecutar varias veces desde diferentes partes del programa. Las funciones son una forma de organizar y reutilizar el código, lo que hace que el programa sea más eficiente y fácil de mantener.
+
+**Características de las funciones en JavaScript**
+
+1. **Nombre**: Las funciones tienen un nombre que se utiliza para llamarlas.
+2. **Parámetros**: Las funciones pueden recibir parámetros, que son valores que se pasan a la función cuando se llama.
+3. **Cuerpo**: El cuerpo de la función es el código que se ejecuta cuando se llama a la función.
+4. **Return**: Las funciones pueden devolver un valor utilizando la palabra clave `return`.
+
+**Tipos de funciones en JavaScript**
+
+1. **Funciones declaradas**: Son funciones que se declaran utilizando la palabra clave `function`.
+2. **Funciones expresadas**: Son funciones que se asignan a una variable o propiedad.
+3. **Funciones anónimas**: Son funciones que no tienen un nombre y se utilizan como callbacks o como argumentos de otras funciones.
+4. **Funciones flecha**: Son funciones que se declaran utilizando la sintaxis de flecha (`=>`) y son más concisas que las funciones declaradas.
+
+1. **Función declarada**
+
+```js
+function saludar(nombre) {
+	console.log(`Hola, ${nombre}!`);
+}
+saludar('Juan'); // Output: Hola, Juan!
+```
+
+2. **Función expresada**
+
+```js
+const saludar = function(nombre) {
+	console.log(`Hola, ${nombre}!`);
+};
+saludar('Juan'); // Output: Hola, Juan!
+```
+
+3. **Función anónima**
+
+```js
+setTimeout(function() {
+	console.log('Hola, mundo!');
+}, 2000);
+```
+
+4. **Función flecha**
+
+```js
+const saludar = (nombre) => {
+	console.log(`Hola, ${nombre}!`);
+};
+saludar('Juan'); // Output: Hola, Juan!
+```
+
+#### **Funcion Flecha (Arrow Function)**
 
 Una función de flecha es una forma concisa de escribir una expresión de función. Es una sintaxis abreviada que te permite definir una función sin utilizar la palabra clave `function`.
 
@@ -246,7 +301,7 @@ Algunos beneficios clave de las funciones de flecha incluyen:
 
 En general, las funciones de flecha son una característica poderosa y flexible en JavaScript, y se utilizan ampliamente en el desarrollo de JavaScript moderno.
 
-- **Documentacion**
+#### **Documentación**
 
 
 
@@ -266,7 +321,7 @@ En general, las funciones de flecha son una característica poderosa y flexible 
 
 #### Sintaxis
 
-````
+````js
 <tipo_variable> identificador = dato
 ````
 
@@ -927,7 +982,7 @@ La estructura `for` se utiliza para ejecutar un bloque de código un número det
 Sintaxis:
 
 ```js
-for (inicialización; condición; incremento) {
+for (inicialización; condición; incremento (o decremento)) {
 // código a ejecutar en cada iteración
 }
 ```
@@ -938,6 +993,11 @@ Ejemplo:
 for (let i = 0; i < 5; i++) {
 	console.log(i);
 }
+// 0
+// 1
+// 2
+// 3
+// 4
 ```
 
 ##### 4. For-In (Para-En)
@@ -960,7 +1020,25 @@ for (variable of iterable) {
 }
 ```
 
-##### 6. Break (Romper)
+##### 6. ForEach()
+
+La estructura `forEach` se puede considerar como una forma de loop que se ejecuta automáticamente para cada elemento del array, sin necesidad de escribir explícitamente un bucle `for` o `while`.
+
+Es un tipo de iterador conocido como "callback-based iterator" (iterador basado en callbacks), o sea,  función que se va a ejecutar para cada elemento del array.
+
+````js
+//array.forEach(callbackFunction => {})
+const arrayNum = [1,20,45]
+arrayNum.forEach(numero => {
+    if (numero >= 10){
+    	console.log(`# mayor de 10: ${numero}`)	
+    } 
+}) 	
+	// # mayor de 10: 20
+	// # mayor de 10: 45
+````
+
+##### 7.Break (Romper)
 
 La instrucción `break` se utiliza para salir de un bucle o una estructura de control de flujo. La sintaxis es la siguiente:
 
@@ -968,7 +1046,7 @@ La instrucción `break` se utiliza para salir de un bucle o una estructura de co
 break;
 ```
 
-##### 7. Continue (Continuar)
+##### 8. Continue (Continuar)
 
 La instrucción `continue` se utiliza para saltar a la siguiente iteración de un bucle. La sintaxis es la siguiente:
 
@@ -976,7 +1054,7 @@ La instrucción `continue` se utiliza para saltar a la siguiente iteración de u
 continue;
 ```
 
-##### 8. Return (Retornar)
+##### 9. Return (Retornar)
 
 La instrucción `return` se utiliza para salir de una función y devolver un valor. La sintaxis es la siguiente:
 
@@ -985,6 +1063,249 @@ return valor;
 ```
 
 Es importante destacar que las estructuras de control de flujo se utilizan para controlar el orden en que se ejecutan las instrucciones de un programa, lo que permite crear algoritmos más eficientes y escalables.
+
+### Funciones
+
+Una función es un bloque de código que se puede ejecutar varias veces desde diferentes partes del programa. Las funciones son fundamentales en la programación y sirven para:
+
+**¿Para qué sirven las funciones?**
+
+1. **Reutilización de código**: Las funciones permiten reutilizar código, evitando la duplicación de código y reduciendo la cantidad de líneas de código.
+2. **Organización del código**: Las funciones ayudan a organizar el código en bloques lógicos y fáciles de entender.
+3. **Abstracción**: Las funciones pueden abstraer complejidad, permitiendo que el código sea más fácil de entender y mantener.
+4. **Reutilización de lógica**: Las funciones pueden ser reutilizadas en diferentes partes del programa, reduciendo la cantidad de código que se necesita escribir.
+
+#### **Tipos de funciones en JavaScript**
+
+- Funciones declaradas (Function Declaration):  Se definen utilizando la palabra clave `function` seguida del nombre de la función y los parámetros entre paréntesis.
+
+```js
+function suma(a, b) {
+	return a + b;
+}
+```
+
+- Funciones expresadas (Function Expression): Se definen asignando una función a una variable.
+
+```js
+const suma = function(a, b) {
+	return a + b;
+};
+```
+
+- Funciones flecha (Arrow Function): Se definen utilizando la sintaxis `=>` y son más concisas que las funciones declaradas y expresadas.
+
+```js
+const suma = (a, b) => a + b;
+```
+
+- Funciones anónimas (Anonymous Function): Se definen sin un nombre y se utilizan como argumentos de otras funciones o como valores de variables.
+
+```js
+const saludo = function() {
+  return "Hola";
+};
+
+setTimeout(function() {
+  console.log("Hola después de 3 segundos");
+}, 3000);
+
+// Lista de personas
+const personas = [
+  { nombre: "Juan", edad: 25 },
+  { nombre: "Ana", edad: 17 },
+  { nombre: "Luis", edad: 30 },
+  { nombre: "María", edad: 15 }
+];
+
+// Usamos una función anónima para filtrar a las personas mayores de 18 años
+const mayoresDeEdad = personas.filter(function(persona) {
+  return persona.edad > 18;
+});
+
+console.log(mayoresDeEdad);
+
+```
+
+- Funciones asíncronas (Async Function): Se definen utilizando la palabra clave `async` y permiten trabajar con código asíncrono de manera más sencilla.
+
+```js
+async function suma(a, b) {
+	return a + b;
+}
+```
+
+- Funciones generadoras (Generator Function): Se definen utilizando la palabra clave `function*` y permiten crear iteradores que pueden ser utilizados para generar secuencias de valores.
+
+```js
+function* suma(a, b) {
+	yield a + b;
+}
+```
+
+En resumen, las funciones en JavaScript son fundamentales para la programación y se utilizan para reutilizar código, organizar el código y abstraer complejidad. Hay diferentes tipos de funciones, cada una con sus propias características y usos.
+
+#### **Declaraciones**
+
+En JavaScript, las funciones pueden ser declaradas antes o después de ser llamadas, dependiendo del tipo de declaración y del alcance de la función.
+
+**Declaración de función con `function`**
+
+Cuando se declara una función con la palabra clave `function`, se puede llamar antes o después de su declaración. Esto se debe a que las declaraciones de función con `function` son "hoisted" (elevadas) al principio del ámbito de la función, lo que significa que la función se define antes de que se ejecute cualquier código.
+
+Ejemplo:
+
+```js
+console.log(miFuncion()); // "Hola, mundo!"
+
+function miFuncion() {
+	return "Hola, mundo!";
+}
+```
+
+En este ejemplo, la función `miFuncion` se declara después de ser llamada, pero debido a la "hoisting", la función se define antes de que se ejecute el código.
+
+**Declaración de función con `let` o `const`**
+
+Cuando se declara una función con `let` o `const`, la función no se puede llamar antes de su declaración. Esto se debe a que las declaraciones con `let` y `const` no son "hoisted" al principio del ámbito de la función.
+
+Ejemplo:
+
+```js
+console.log(miFuncion()); // Error: miFuncion is not defined
+
+let miFuncion = function() {
+	return "Hola, mundo!";
+}
+```
+
+En este ejemplo, la función `miFuncion` se declara con `let`, por lo que no se puede llamar antes de su declaración.
+
+**Declaración de función con expresión de función**
+
+Cuando se declara una función con una expresión de función (es decir, una función anónima asignada a una variable), la función no se puede llamar antes de su declaración.
+
+Ejemplo:
+
+```js
+console.log(miFuncion()); // Error: miFuncion is not defined
+
+const miFuncion = () => {
+	return "Hola, mundo!";
+}
+```
+
+En este ejemplo, la función `miFuncion` se declara con una expresión de función, por lo que no se puede llamar antes de su declaración.
+
+En resumen:
+
+- Las declaraciones de función con `function` pueden ser llamadas antes o después de su declaración.
+- Las declaraciones de función con `let` o `const` no pueden ser llamadas antes de su declaración.
+- Las declaraciones de función con expresión de función no pueden ser llamadas antes de su declaración.
+
+Es importante tener en cuenta que, aunque las declaraciones de función con `function` pueden ser llamadas antes de su declaración, es una buena práctica declarar las funciones antes de usarlas para evitar confusiones y errores.
+
+#### **Anidadas**
+
+Las funciones anidadas se llaman de la misma manera que las funciones normales, pero con una pequeña diferencia. La función anidada se llama desde dentro de la función externa que la contiene.
+
+Aquí hay un ejemplo:
+
+```js
+function externa() {
+	function interna() {
+		console.log("Soy la función interna");
+	}
+	interna(); // Llamada a la función interna desde dentro de la función externa
+}
+externa(); // Llamada a la función externa
+```
+
+En este ejemplo, la función `interna` se llama desde dentro de la función `externa` utilizando el nombre de la función `interna`. La función `externa` se llama desde fuera utilizando el nombre de la función `externa`.
+
+Si intentamos llamar a la función `interna` desde fuera de la función `externa`, obtendremos un error, porque la función `interna` no está en el ámbito global:
+
+```js
+function externa() {
+	function interna() {
+		console.log("Soy la función interna");
+	}
+}
+interna(); // Error: interna is not defined
+```
+
+Para llamar a una función anidada desde fuera de la función externa, debemos devolver la función anidada desde la función externa y asignarla a una variable. Luego, podemos llamar a la función anidada utilizando la variable:
+
+```js
+function externa() {
+	function interna() {
+		console.log("Soy la función interna");
+	}
+	return interna;
+}
+const miFuncionInterna = externa();
+miFuncionInterna(); // Llamada a la función interna
+```
+
+En este ejemplo, la función `externa` devuelve la función `interna` y se asigna a la variable `miFuncionInterna`. Luego, podemos llamar a la función `interna` utilizando la variable `miFuncionInterna`.
+
+#### **Función c/Orden Superior**
+
+**¿Qué son las funciones de orden superior?**
+
+Una función de orden superior es una función que toma otra función como parámetro o devuelve una función como resultado. En otras palabras, una función de orden superior es una función que se puede utilizar como una función "normal" pero que también puede ser utilizada como un argumento o un valor de retorno de otra función.
+
+**Ejemplos de funciones de orden superior**
+
+1. **Arrow Function**
+
+````js
+function applyFunc(func, param) {
+    func(param)
+}
+const myFunc4 = (name) => console.log(`Hola, ${name}!!`)
+applyFunc(myFunc4,"Funcion de Orden Superior")
+// Hola, Funcion de Orden Superior
+````
+
+2. **Filter**: La función `filter()` es un ejemplo clásico de una función de orden superior. Toma una función como parámetro y devuelve un nuevo array con los elementos que cumplen con la condición especificada por la función pasada como parámetro.
+
+```js
+const numbers = [1, 2, 3, 4, 5];
+const evenNumbers = numbers.filter(x => x % 2 === 0); // [2, 4]
+```
+
+En este ejemplo, la función `filter()` toma una función anónima como parámetro, que se utiliza para determinar si un elemento del array es par o no.
+
+3. **Map**: La función `map()` es otra función de orden superior que toma una función como parámetro y devuelve un nuevo array con los resultados de aplicar la función a cada elemento del array original.
+
+```js
+const numbers = [1, 2, 3, 4, 5];
+const doubleNumbers = numbers.map(x => x * 2); // [2, 4, 6, 8, 10]
+```
+
+En este ejemplo, la función `map()` toma una función anónima como parámetro, que se utiliza para doblar cada elemento del array.
+
+4. *Reduce**: La función `reduce()` es una función de orden superior que toma una función como parámetro y devuelve un valor que es el resultado de aplicar la función a cada elemento del array, de izquierda a derecha.
+
+```js
+const numbers = [1, 2, 3, 4, 5];
+const sum = numbers.reduce((acc, current) => acc + current, 0); // 15
+```
+
+En este ejemplo, la función `reduce()` toma una función anónima como parámetro, que se utiliza para sumar cada elemento del array.
+
+**Ventajas de las funciones de orden superior**
+
+Las funciones de orden superior ofrecen varias ventajas, como:
+
+- **Modularidad**: Las funciones de orden superior permiten separar la lógica de la aplicación en pequeñas funciones reutilizables.
+- **Flexibilidad**: Las funciones de orden superior permiten cambiar la lógica de la aplicación sin modificar el código existente.
+- **Reutilización**: Las funciones de orden superior permiten reutilizar el código en diferentes contextos.
+
+**Conclusión**
+
+En resumen, las funciones de orden superior son una característica fundamental en JavaScript que permiten crear funciones más flexibles y reutilizables. Al entender cómo funcionan las funciones de orden superior, podrás escribir código más eficiente y escalable.
 
 ### Arrays
 
@@ -1485,6 +1806,8 @@ El objeto Set en JavaScript es una colección de valores únicos, que pueden ser
 
 > Los métodos de `Set` permiten interactuar con esta colección de valores de manera eficiente y segura.
 
+- `new Set()`: Declara e inicializa. 
+
 ````js
 //DECLARACIÓN
 let mySet = new Set() // Set(0) {}
@@ -1569,6 +1892,8 @@ const miSet = new Set([1, 2, 3]);
 console.log(miSet.size); // 3
 ````
 
+#### Iterar
+
 - `values()`: Devuelve un objeto iterable que contiene los valores del conjunto.
 
 ````js
@@ -1606,73 +1931,129 @@ miSet.forEach(elemento => console.log(elemento)); // 1, 2, 3
 
 En JavaScript, `Map` es una estructura de datos que almacena pares clave-valor, similar a un objeto. Sin embargo, a diferencia de los objetos, `Map` permite utilizar cualquier tipo de valor como clave, no solo cadenas de texto.
 
+````js
+const myMap = new Map([
+	[clave1, valor1],
+	[clave2, valor2],
+	[clave3, valor3]
+])
+````
+
 La estructura de datos `Map` es parte del estándar ECMAScript 2015 (ES6) y es compatible con la mayoría de los navegadores modernos y Node.js.
 
-**Crear un Map**
+#### Métodos
 
-Puedes crear un `Map` utilizando la palabra clave `new` y el constructor `Map`:
-
-```js
-const miMapa = new Map();
-```
-
-**Agregar pares clave-valor**
-
-Puedes agregar pares clave-valor a un `Map` utilizando el método `set()`:
+- `new Map()`: crear un `Map` utilizando la palabra clave `new` y el constructor `Map`.
 
 ```js
-miMapa.set('nombre', 'Juan');
-miMapa.set('edad', 30);
+// DECLARACIÓN
+const miMapa = new Map(); // Map(0) {}
+
+// INICIALIZACIÓN
+myMap = new Map([
+    ["name","Charly"],
+    ["email","charlybio87@outlook.com"],
+    ["age", 25],
+])
+// Map(3) {
+//  'name' => 'Charly',
+//  'email' => 'charlybio87@outlook.com',
+//  'age' => 25
+// }
+
 ```
 
-**Obtener valores**
-
-Puedes obtener un valor de un `Map` utilizando el método `get()`:
+- `set()` :  agregar pares clave-valor a un `Map`.
 
 ```js
-const nombre = miMapa.get('nombre'); // devuelve "Juan"
+miMapa.set('alias', 'charlyDev');
+miMapa.set('name', 'Juan');
+miMapa.set('age', 30);
+// Map(3) {
+//  'name' => 'Juan',
+//  'email' => 'charlybio87@outlook.com',
+//  'age' => 20,
+//	'alias' => charlyDev
+// }
 ```
 
-**Verificar si una clave existe**
-
-Puedes verificar si una clave existe en un `Map` utilizando el método `has()`:
+- `get()`: obtener un valor de un `Map`.
 
 ```js
-const tieneNombre = miMapa.has('nombre'); // devuelve true
+const nombre = miMapa.get('name'); // devuelve "Juan"
 ```
 
-**Eliminar pares clave-valor**
-
-Puedes eliminar un par clave-valor de un `Map` utilizando el método `delete()`:
+- `has()`: verificar si una clave existe en un `Map`.
 
 ```js
-miMapa.delete('edad');
+const tieneNombre = miMapa.has('name'); // devuelve true
 ```
 
-**Iterar sobre un Map**
+- `delete()`: eliminar un par clave-valor de un `Map`.
+
+```js
+miMapa.delete('age');
+```
+
+-  `keys() and values()`: devuelve un objeto `MapIterator` que contiene las claves (o llaves) o valor del mapa (o map).
+
+````js
+console.log(myMap.keys()); 
+// [Map Iterator] { 'name', 'age', 'alias' }
+console.log(myMap.values()); 
+// [Map Iterator] { 'Charly Dev', 25, 'Charly Bio' }
+
+const keysIterator = myMap.keys()
+console.log(keysIterator.next().value); // name
+console.log(keysIterator.next().value); // age
+console.log(keysIterator.next().value); // alias
+````
+
+- `entries()`: Este método devuelve un objeto `Iterator` que contiene los pares clave-valor.
+
+````js
+console.log(myMap.entries())
+// [Map Entries] {
+// 	[ 'name', 'Charly Dev' ],
+// 	[ 'age', 25 ],
+// 	[ 'alias', 'Charly Bio' ]
+// }
+````
+
+- `size`:  nos devuelve la cantidad de keys que guarda.
+
+````js
+myMap.size // 3
+````
+
+- `Array.from()`: convertir un `Map` a un arreglo.
+
+```js
+const miArreglo = Array.from(myMap);
+// [ [ 'name', 'Charly Dev' ], [ 'age', 25 ], [ 'alias', 'Charly Bio' ] ]
+```
+
+- `Object.fromEntries()`: convertir un `Map` a un objeto utilizando el método 
+
+```js
+const miObjeto = Object.fromEntries(myMap);
+// { name: 'Charly Dev', age: 25, alias: 'Charly Bio' }
+```
+
+- `clear()`: elimina el key-value del `map`.
+
+````js
+myMap.clear() // Map(0) {}
+````
+
+#### Iterar 
 
 Puedes iterar sobre un `Map` utilizando el método `forEach()`:
 
 ```js
-miMapa.forEach((valor, clave) => {
+const miMapa.forEach((valor, clave) => {
 	console.log(`${clave}: ${valor}`);
 });
-```
-
-**Convertir un Map a un arreglo**
-
-Puedes convertir un `Map` a un arreglo utilizando el método `Array.from()`:
-
-```js
-const miArreglo = Array.from(miMapa);
-```
-
-**Convertir un Map a un objeto**
-
-Puedes convertir un `Map` a un objeto utilizando el método `Object.fromEntries()`:
-
-```js
-const miObjeto = Object.fromEntries(miMapa);
 ```
 
 **Casos de uso**
@@ -1682,77 +2063,6 @@ const miObjeto = Object.fromEntries(miMapa);
 En JavaScript, `Map` es una estructura de datos que almacena pares clave-valor, similar a un objeto. Sin embargo, a diferencia de los objetos, `Map` permite utilizar cualquier tipo de valor como clave, no solo cadenas de texto.
 
 La estructura de datos `Map` es parte del estándar ECMAScript 2015 (ES6) y es compatible con la mayoría de los navegadores modernos y Node.js.
-
-**Crear un Map**
-
-Puedes crear un `Map` utilizando la palabra clave `new` y el constructor `Map`:
-
-```js
-const miMapa = new Map();
-```
-
-**Agregar pares clave-valor**
-
-Puedes agregar pares clave-valor a un `Map` utilizando el método `set()`:
-
-```js
-miMapa.set('nombre', 'Juan');
-miMapa.set('edad', 30);
-```
-
-**Obtener valores**
-
-Puedes obtener un valor de un `Map` utilizando el método `get()`:
-
-```js
-const nombre = miMapa.get('nombre'); // devuelve "Juan"
-```
-
-**Verificar si una clave existe**
-
-Puedes verificar si una clave existe en un `Map` utilizando el método `has()`:
-
-```js
-const tieneNombre = miMapa.has('nombre'); // devuelve true
-```
-
-**Eliminar pares clave-valor**
-
-Puedes eliminar un par clave-valor de un `Map` utilizando el método `delete()`:
-
-```js
-miMapa.delete('edad');
-```
-
-**Iterar sobre un Map**
-
-Puedes iterar sobre un `Map` utilizando el método `forEach()`:
-
-```js
-miMapa.forEach((valor, clave) => {
-	console.log(`${clave}: ${valor}`);
-});
-```
-
-**Convertir un Map a un arreglo**
-
-Puedes convertir un `Map` a un arreglo utilizando el método `Array.from()`:
-
-```js
-const miArreglo = Array.from(miMapa);
-```
-
-**Convertir un Map a un objeto**
-
-Puedes convertir un `Map` a un objeto utilizando el método `Object.fromEntries()`:
-
-```js
-const miObjeto = Object.fromEntries(miMapa);
-```
-
-**Casos de uso**
-
-`Map` es útil cuando necesitas almacenar pares clave-valor con claves que no son cadenas de texto, como números o objetos. También es útil cuando necesitas iterar sobre los pares clave-valor en un orden específico.
 
 Aquí hay algunos ejemplos de casos de uso:
 
