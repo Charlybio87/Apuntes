@@ -1,5 +1,7 @@
 # \<JavaScript> Conceptos | Prácticas | Herramientas
 
+---
+
 ### Introducción  
 
 ⏫ [Node.js — Download Node.js® (nodejs.org)](https://nodejs.org/en/download/package-manager)
@@ -57,6 +59,8 @@ La sentencia alert() mostrará una ventana sobre la página web que estemos acce
 ````js
 alert("¡Hola Coder!"); 
 ````
+
+---
 
 ### Términos
 
@@ -236,6 +240,7 @@ Es un bloque de código que se puede ejecutar varias veces desde diferentes part
 1. **Función declarada**
 
 ```js
+// saludar(recibe un valor: nombre)
 function saludar(nombre) {
 	console.log(`Hola, ${nombre}!`);
 }
@@ -305,7 +310,7 @@ En general, las funciones de flecha son una característica poderosa y flexible 
 
 
 
-
+---
 
 ### Principios
 
@@ -316,6 +321,8 @@ En general, las funciones de flecha son una característica poderosa y flexible 
 #### solid
 
 
+
+---
 
 ### Tipos de variables
 
@@ -405,6 +412,8 @@ console.log(nombre)
 - Usa `const` para constantes inmutables.
 - Usa `let` para variables cuyo valor puede cambiar.
 - Evita `var` debido a sus problemas de alcance y re-declaración.
+
+---
 
 ### Tipos de datos 
 
@@ -506,6 +515,88 @@ console.log(typeof mySymbol) // --> symbol
 console.log(typeof myBigInt) // --> bigint
 console.log(typeof myBigInt2) // --> bigint
 ````
+
+#### Diferencias entre primitivos y objetos
+
+**Primitivos**
+
+En JavaScript, los primitivos son valores simples que no son objetos. Los primitivos son:
+
+- Números (number)
+- Cadenas de texto (string)
+- Booleanos (boolean)
+- Null
+- Undefined
+
+Los primitivos no tienen métodos ni propiedades, solo valor.
+
+**Objetos**
+
+Los objetos en JavaScript son colecciones de pares clave-valor. Un objeto puede tener métodos y propiedades. Los objetos son instancias de la clase Object.
+
+**Diferencias clave**
+
+- **Inmutabilidad**: Los primitivos son inmutables, lo que significa que no se pueden cambiar una vez creados. Los objetos son mutables, lo que significa que se pueden cambiar después de ser creados.
+- **Métodos y propiedades**: Los primitivos no tienen métodos ni propiedades, mientras que los objetos sí.
+- **Comparación**: Los primitivos se comparan por valor, mientras que los objetos se comparan por referencia.
+
+**Métodos y propiedades de objetos**
+
+Los objetos en JavaScript pueden tener métodos y propiedades. Los métodos son funciones que se pueden llamar en un objeto, mientras que las propiedades son valores que se almacenan en un objeto.
+
+- **Métodos**: Los métodos se definen usando la palabra clave `function` dentro de un objeto. Por ejemplo:
+
+```js
+const persona = {
+  nombre: 'Juan',
+  edad: 30,
+  saludar: function() {
+    console.log(`Hola, mi nombre es ${this.nombre} y tengo ${this.edad} años.`);
+  }
+};
+```
+
+- **Propiedades**: Las propiedades se definen usando la sintaxis `clave: valor` dentro de un objeto. Por ejemplo:
+
+```js
+const persona = {
+  nombre: 'Juan',
+  edad: 30
+};
+```
+
+**Funcionalidad de objetos**
+
+Los objetos en JavaScript tienen varias funcionalidades, como:
+
+- **Prototipos**: Los objetos pueden heredar propiedades y métodos de otros objetos mediante la cadena de prototipos.
+- **Constructores**: Los objetos pueden ser creados usando constructores, que son funciones especiales que retornan un objeto nuevo.
+- **Métodos de instancia**: Los objetos pueden tener métodos de instancia, que son métodos que se llaman en una instancia específica de un objeto.
+
+**Ejemplo de código**
+
+Aquí te dejo un ejemplo de código que muestra la diferencia entre primitivos y objetos:
+
+```js
+// Primitivo
+const nombre = 'Juan';
+console.log(nombre); // "Juan"
+
+// Objeto
+const persona = {
+  nombre: 'Juan',
+  edad: 30
+};
+console.log(persona); // { nombre: "Juan", edad: 30 }
+
+// Método de objeto
+persona.saludar = function() {
+  console.log(`Hola, mi nombre es ${this.nombre} y tengo ${this.edad} años.`);
+};
+persona.saludar(); // "Hola, mi nombre es Juan y tengo 30 años."
+```
+
+---
 
 ### Operadores
 
@@ -680,6 +771,8 @@ Recuerda que los paréntesis pueden anular la precedencia y te permiten controla
 
 [Precedencia de operadores - JavaScript | MDN (mozilla.org)](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/Operator_precedence)
 
+---
+
 ### Cadenas de Texto (String)
 
 Las cadenas se utilizan para representar texto. Se escriben encerrando su contenido entre comillas.
@@ -767,6 +860,8 @@ Cadenas de texto que nos permiten utilizar expresiones incrustadas.
    ```
 
 En resumen, las plantillas literales hacen que trabajar con cadenas de texto sea más legible y expresivo.
+
+---
 
 ### Estructuras del Programa
 
@@ -1036,6 +1131,13 @@ arrayNum.forEach(numero => {
 }) 	
 	// # mayor de 10: 20
 	// # mayor de 10: 45
+
+const resultado = productos.forEach(
+    (producto) => {
+        console.log('hola ' + producto.nombre)
+    }
+)
+console.log(resultado)
 ````
 
 ##### 7.Break (Romper)
@@ -1064,6 +1166,8 @@ return valor;
 
 Es importante destacar que las estructuras de control de flujo se utilizan para controlar el orden en que se ejecutan las instrucciones de un programa, lo que permite crear algoritmos más eficientes y escalables.
 
+---
+
 ### Funciones
 
 Una función es un bloque de código que se puede ejecutar varias veces desde diferentes partes del programa. Las funciones son fundamentales en la programación y sirven para:
@@ -1075,7 +1179,7 @@ Una función es un bloque de código que se puede ejecutar varias veces desde di
 3. **Abstracción**: Las funciones pueden abstraer complejidad, permitiendo que el código sea más fácil de entender y mantener.
 4. **Reutilización de lógica**: Las funciones pueden ser reutilizadas en diferentes partes del programa, reduciendo la cantidad de código que se necesita escribir.
 
-#### **Tipos de funciones en JavaScript**
+#### **Tipos de funciones **
 
 - Funciones declaradas (Function Declaration):  Se definen utilizando la palabra clave `function` seguida del nombre de la función y los parámetros entre paréntesis.
 
@@ -1097,6 +1201,24 @@ const suma = function(a, b) {
 
 ```js
 const suma = (a, b) => a + b;
+
+const resultado = productos.filter( (producto) => { 
+    return producto.nombre.includes('TV')
+	}
+)
+const resultado_3 = productos.filter( producto => producto.nombre.includes('TV') ) // S/parentesis cdo tiene un solo paramentro
+
+const filtrar = (array, condicion) => {  // CallBack: condicion
+    const resultado = []
+    for(const elemento of array){
+        if(condicion(elemento)){
+            resultado.push(elemento)
+        }
+    }
+    return resultado
+}
+const filtroPorNombre = (producto) => producto.nombre.includes('TV')
+console.log(filtrar(productos, filtrarPorNombre))
 ```
 
 - Funciones anónimas (Anonymous Function): Se definen sin un nombre y se utilizan como argumentos de otras funciones o como valores de variables.
@@ -1122,9 +1244,15 @@ const personas = [
 const mayoresDeEdad = personas.filter(function(persona) {
   return persona.edad > 18;
 });
-
 console.log(mayoresDeEdad);
 
+console.log(filter(personas, (persona) => persona.edad > 25))
+// Funcion Normal S/Nombre
+const resultado_2 = productos.filter(
+    function(producto){
+        return producto.nombre.includes('TV') 
+    }
+) 
 ```
 
 - Funciones asíncronas (Async Function): Se definen utilizando la palabra clave `async` y permiten trabajar con código asíncrono de manera más sencilla.
@@ -1307,6 +1435,111 @@ Las funciones de orden superior ofrecen varias ventajas, como:
 
 En resumen, las funciones de orden superior son una característica fundamental en JavaScript que permiten crear funciones más flexibles y reutilizables. Al entender cómo funcionan las funciones de orden superior, podrás escribir código más eficiente y escalable.
 
+#### Import () and Export()
+
+````html
+<head>
+    <script src="script.js" type="module"></script>
+</head>
+````
+
+````js
+// math.js
+export function sumar(a,b){
+    return a + b
+}
+export function name(alumno){
+    return 'Hola ${alumno}'
+}
+````
+
+````js
+// script.js
+import {sumar as add, nombre as name} from './math.js'
+console.log(add(1,2));
+console.log(name('Carlos'));
+````
+
+---
+
+### CallBack
+
+[Función Callback - Glosario de MDN Web Docs: Definiciones de términos relacionados con la Web | MDN (mozilla.org)](https://developer.mozilla.org/es/docs/Glossary/Callback_function)
+
+Una callback (también conocida como función de devolución de llamada) es una función que se pasa como argumento a otra función, y se ejecuta cuando se produce un evento o se completa una tarea específica.
+
+**Función:**
+
+La función de una callback es permitir que una función se comunique con otra función después de que se haya completado una tarea o se haya producido un evento. De esta manera, la función que llama a la callback puede continuar ejecutándose sin bloquearse, mientras que la callback se encarga de manejar el resultado o el evento.
+
+**Descripción en JavaScript:**
+
+En JavaScript, una callback es una función que se pasa como argumento a otra función, utilizando el siguiente patrón:
+
+```JS
+function funcionPrincipal(callback) {
+// Código que se ejecuta antes de llamar a la callback
+callback(); // Llamada a la callback
+// Código que se ejecuta después de llamar a la callback
+}
+
+function callback() {
+// Código que se ejecuta cuando se llama a la callback
+}
+```
+
+Por ejemplo, supongamos que queremos hacer una solicitud de Datos y  procesar la respuesta cuando se recibe. Podemos utilizar una callback para manejar la respuesta y validación :
+
+```js
+/*Funciones*/
+const solicitarDato = (mensaje, errorMensaje, validacion) => {
+    let dato = prompt(mensaje)
+    while( !validacion(dato) ){
+        dato = prompt(errorMensaje)
+    }
+    return dato
+} 
+
+// CallBack --> Validaciones
+const validacionNombre = (valor) => {
+    return Boolean(valor && isNaN(valor) && !valor.includes('*'))
+}
+const validacionEdad = (valor) => {
+    return Boolean(valor && !isNaN(valor))
+}
+
+/*LLamado a funciones:*/
+let nombre = solicitarDato(
+    'Ingrese el nombre', 
+    'Error al ingresar nombre, recuerda que no se permiten numeros o asteriscos',
+    validacionNombre // funcion pasada por argumento (referencia de la funcion)
+)
+let edad = solicitarDato(
+    'Ingrese su edad',
+    'Error al ingresar la edad',
+    validacionEdad // funcion pasada por argumento
+) 
+```
+
+En este ejemplo, primero se realizo la customización de los mensaje que recibirán los `prompt(mensaje)`, en segundo lugar se realiza las validaciones correspondientes a través de la CallBack.
+
+La función pasada por argumento se la conoce como `Referencia de la Función`. Se puede observar que no se le coloca el ( ) porque sino se estaría `invocando` y estaría entregando un valor en este caso un booleano.  La invocación de la función se realiza por detrás (por eso se lo conoce por CALLBACK)  dentro de la función solicitarDato().
+
+**Ventajas:**
+
+1. **Asincronía**: Las callbacks permiten que el código se ejecute de manera asincrónica, lo que significa que no se bloquea la ejecución del código mientras se espera a que se complete una tarea.
+2. **Flexibilidad**: Las callbacks permiten que se puedan manejar diferentes resultados o eventos de manera personalizada.
+3. **Reutilización del código**: Las callbacks permiten reutilizar el código y evitar la duplicación de lógica.
+
+**Desventajas:**
+
+1. **Complejidad**: Las callbacks pueden hacer que el código sea más complejo y difícil de leer.
+2. **Callback hell**: Cuando se utilizan demasiadas callbacks anidadas, puede generar un "callback hell" que hace que el código sea difícil de entender y mantener.
+
+En resumen, las callbacks son una herramienta poderosa en JavaScript que permiten manejar eventos y resultados de manera asincrónica y flexible, pero requieren cuidado y atención para evitar la complejidad y el "callback hell".
+
+---
+
 ### Arrays
 
 [Array - JavaScript | MDN (mozilla.org)](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array)
@@ -1452,9 +1685,37 @@ console.log(nombres.includes('Carlos'))
 // true
 ````
 
-- `find()`: Busca el primer elemento que cumpla con una condición y lo devuelve.
-- `findIndex()`: Busca la posición del primer elemento que cumpla con una condición y devuelve su índice.
+- `find()`: Busca el primer elemento que cumpla con una condición y lo devuelve. Sino cumple con la condición devuelve undefined.
+
+````js
+const resultado = personas.find((persona) => {
+    return persona.nombre === 'pepe'
+})
+console.log(resultado)
+
+const producto_70 = productos.find(producto => producto.id === 70)
+console.log(producto_70) //no cumple con la condicion: UNDEFINED.
+````
+
+> Find() siempre devuelve "un" objeto.
+
+- `findIndex()`: Busca la posición del primer elemento que cumpla con una condición y devuelve su índice. Sino cumple con la condición devuelve -1.
+
+````js
+const posicionProducto = producto.findIndex(producto => producto.id === 1)
+console.log(prosicionProducto)
+
+````
+
 - `filter()`: Crea un nuevo arreglo con los elementos que cumplen con una condición.
+
+````js
+const resultado = productos.filter((producto) => producto.nombre.includes('TV'))
+
+console.log(resultado)
+````
+
+> Filter() siempre retorna un array, el array estará compuesto por los elementos que hayan cumplido con la callback.
 
 ##### **3. Métodos de ordenamiento y clasificación**
 
@@ -1494,6 +1755,8 @@ console.log(myNewArray); // [ 'alberto', 'ribas' ]
 - `some()`: Verifica si al menos un elemento del arreglo cumple con una condición y devuelve un booleano.
 - `every()`: Verifica si todos los elementos del arreglo cumplen con una condición y devuelve un booleano.
 
+---
+
 ### Objetos
 
 **¿Qué es un objeto en JavaScript?**
@@ -1529,7 +1792,7 @@ function Persona(nombre, edad) {
 let persona = new Persona('Juan', 30);
 ````
 
-**Propiedades de un objeto**
+#### **Propiedades**
 
 Las propiedades de un objeto son pares clave-valor que se utilizan para describir los atributos del objeto. Las propiedades se pueden acceder utilizando la notación de punto (`.`) o la notación de corchetes (`[]`).
 
@@ -1544,7 +1807,31 @@ console.log(persona.nombre); // "Juan"
 console.log(persona['edad']); // 30
 ```
 
-**Métodos de un objeto**
+````js
+// Modificación de propiedades
+
+person.name = "Brais Moure"
+console.log(person.name)
+
+console.log(typeof person.age)
+person.age = "37"
+console.log(person.age)
+console.log(typeof person.age)
+
+// Eliminación de propiedades
+
+delete person.age
+console.log(person)
+
+// Nueva propiedad
+
+person.email = "braismoure@mouredev.com"
+person["age"] = 37
+
+console.log(person)
+````
+
+#### **Métodos (Funciones)**
 
 Los métodos de un objeto son funciones que se utilizan para manipular y interactuar con el objeto. Los métodos se definen como propiedades del objeto que contienen una función.
 
@@ -1559,7 +1846,75 @@ const persona = {
 	}
 }
 persona.saludar(); // "Hola, soy Juan"
+
+let person2 = {
+    name: "Brais",
+    age: 37,
+    alias: "MoureDev",
+    walk: function () {
+        console.log("La persona camina.")
+    }
+}
+person2.walk()
 ```
+
+##### Anidación de Objetos
+
+````js
+let person3 = {
+    name: "Brais",
+    age: 37,
+    alias: "MoureDev",
+    walk: function () {
+        console.log("La persona camina.")
+    },
+    job: {
+        name: "Programador",
+        exp: 15,
+        work: function () {
+            console.log(`La persona de ${this.exp} años de experiencia trabaja.`)
+        }
+    }
+}
+
+console.log(person3)
+````
+
+##### Igualdad de objetos
+
+````js
+let person4 = {
+    name: "Brais Moure",
+    alias: "CharlyDev",
+    email: "braismoure@mouredev.com",
+    age: 37
+}
+
+console.log(person)
+console.log(person4)
+
+console.log(person == person4) // false
+console.log(person === person4) // false
+// se comparan dos valores de direccion de memoria distintas.
+
+console.log(person.name == person4.name) // true
+````
+
+> Los valores como se guardan en memoria no son como el valor  asociado en si en los objetos, sino que es un valor de referencia , es decir, es una dirección de memoria.
+
+##### Funciones como objetos
+
+````js
+function Person(name, age) { // Debería ser una clase
+    this.name = name
+    this.age = age
+}
+let person5 = new Person("Brais", 37)
+console.log(person5)
+console.log(typeof person5) // object
+````
+
+> Esta función actúa como un constructor. Se crea un objeto. Este tipo de función es útil cuando se desea construir múltiples instancias. 
 
 #### Array de objetos
 
@@ -1632,7 +1987,7 @@ Además de los métodos built-in, cada objeto en JavaScript tiene sus propios m�
 
 Estos son solo algunos ejemplos de los métodos que se pueden utilizar con objetos en JavaScript. Hay muchos más, y cada objeto tiene sus propias características y métodos específicos.
 
-#### Iterar
+#### Iteración
 
 En JavaScript, existen varias formas de iterar sobre arrays, objetos y otros tipos de datos utilizando los siguientes métodos:
 
@@ -1719,7 +2074,10 @@ frutas.forEach(function(fruta) {
 // manzana
 // pera
 // naranja
+frutas.forEach(fruta => {console.log(fruta)})
 ```
+
+> ❗Recordar: que no se puede iterar sobre un objeto de manera directa. Los métodos forEach se usan para iterar sobre arreglos (arrays), no sobre objetos.
 
 **Ventajas:**
 
@@ -1742,6 +2100,14 @@ for (var propiedad in persona) {
     console.log(propiedad + ': ' + persona[propiedad]);
   }
 }
+// Output:
+// nombre: Juan
+// edad: 30
+// ciudad: Madrid
+
+Object.keys(persona).forEach(key => {
+    console.log(`${key}: ${persona[key]}`);
+});
 // Output:
 // nombre: Juan
 // edad: 30
@@ -1795,6 +2161,726 @@ En el ejemplo anterior, `for await` permite iterar sobre el arreglo de promesas 
 En resumen, `for await` es una herramienta útil para iterar sobre iterables asíncronos de manera síncrona, lo que puede simplificar el código y hacerlo más legible. Sin embargo, es importante tener en cuenta que solo se puede utilizar con iterables asíncronos, y no con iterables síncronos.
 
 En resumen, cada método tiene sus ventajas y desventajas, y la elección del método adecuado dependerá del tipo de datos que se esté trabajando y del objetivo específico de la iteración.
+
+----
+
+### Destructuring y Spreading
+
+Destructuring y spreading son dos conceptos relacionados en JavaScript que permiten manipular y trabajar con objetos y arreglos de manera más eficiente y concisa.
+
+#### **Destructuring (Desestructuración)**
+
+La desestructuración es una sintaxis especial que permite extraer valores de arreglos o propiedades de objetos y asignarlos a variables individuales de manera más concisa y legible. Fue introducida en ECMAScript 6 (ES6) y simplifica el proceso de extracción de datos.
+
+La desestructuración se utiliza principalmente para:
+
+- Asignar múltiples variables de manera concisa
+- Intercambiar valores de dos variables sin necesidad de una variable temporal
+- Extraer propiedades de objetos y elementos de un arreglo
+
+**Ejemplos de Destructuring**
+
+Trabajando con Arrays:  se emplea [ ]
+
+```js
+const array = [1, 2, 3, 4, 5];
+const [first, second, third] = array;
+console.log(first);  // 1
+console.log(second); // 2
+console.log(third);  // 3
+console.log(four);   // undefined
+```
+
+````js
+const myArray = [1, 2, 3, 4]
+
+// Sintaxis arrays
+
+let [myValue0, myValue1, myValue2, myValue3, myValue4] = myArray
+console.log(myValue0)
+console.log(myValue1)
+console.log(myValue2)
+console.log(myValue3)
+console.log(myValue4)
+
+// Sintaxis arrays con valores predeterminados
+
+let [myValue5 = 0, myValue6 = 0, myValue7 = 0, myValue8 = 0, myValue9 = 0] = myArray
+console.log(myValue5)
+console.log(myValue6)
+console.log(myValue7)
+console.log(myValue8)
+console.log(myValue9)
+
+// Ignorar elementos array
+
+let [myValue10, , , myValue13] = myArray
+console.log(myValue10)
+console.log(myValue13)
+````
+
+Trabajando con Objetos: se emplea { }
+
+```js
+const person = { name: 'Alice', age: 25 };
+const { name, age } = person;
+console.log(name);  // Alice
+console.log(age);   // 25
+```
+
+````js
+let person = {
+    name: "Brais",
+    age: 37,
+    alias: "MoureDev"
+}
+
+// Sintaxis objects
+
+let { name, age, alias } = person
+console.log(name)
+console.log(age)
+console.log(alias)
+console.log(person) // { name: 'Brais', age: 37, alias: 'MoureDev' }
+
+// Sintaxis objects con valores predeterminados
+
+let { name2, age2, alias2, email = "email@email.com" } = person
+console.log(name2) // No existe
+console.log(age2)  // No existe
+console.log(alias2)  // No existe
+console.log(email)
+
+// Sintaxis objects con nuevos nombres de variables
+
+let { alias: alias3, name: name3, age: age3 } = person
+console.log(name3)
+console.log(age3)
+console.log(alias3)
+````
+
+````js
+// Objects anidados
+
+let person3 = {
+    name: "Brais",
+    age: 37,
+    alias: "MoureDev",
+    walk: function () {
+        console.log("La persona camina.")
+    },
+    job: {
+        name: "Programador",
+        exp: 15,
+        work: function () {
+            console.log(`La persona de ${this.age} años de experiencia trabaja.`)
+        }
+    }
+}
+
+let { name: name4, job: { name: jobName } } = person3
+
+console.log(name4)
+console.log(jobName)
+````
+
+#### **Spreading (Expansión)**
+
+La expansión es una sintaxis que permite a un elemento iterable (como un arreglo o cadena) ser expandido en lugares donde cero o más argumentos (para llamadas de función) o elementos (para literales de arreglo) son esperados, o a un objeto ser expandido en lugares donde cero o más pares de valores clave (para literales de objeto) son esperados.
+
+**Ejemplos de Spreading**
+
+Trabajando con Funciones:
+
+```js
+function myFunction(x, y, z) {}
+var args = [0, 1, 2];
+myFunction(...args);
+```
+
+Trabajando con Arreglos:
+
+```js
+var arr1 = [0, 1, 2];
+var arr2 = [3, 4, 5];
+arr1 = [...arr2, ...arr1]; // arr1 is now [3, 4, 5, 0, 1, 2]
+```
+
+````js
+const myArray = [1, 2, 3, 4]
+
+// Sintaxis arrays
+
+let myArray2 = [...myArray, 5, 6]
+
+console.log(myArray2)
+
+// Copia de arrays
+
+let myArray3 = [...myArray]
+
+console.log(myArray3)
+
+// Combinación de arrays
+
+let myArray4 = [...myArray, ...myArray2, ...myArray3]
+
+console.log(myArray4)
+````
+
+Trabajando con Objetos:
+
+```js
+var obj1 = { foo: "bar", x: 42 };
+var obj2 = { foo: "baz", y: 13 };
+var mergedObj = { ...obj1, ...obj2 }; // mergedObj is now { foo: "baz", x: 42, y: 13 }
+```
+
+````js
+let person = {
+    name: "Brais",
+    age: 37,
+    alias: "MoureDev"
+}
+
+// Sintaxis objects
+
+let person4 = { ...person, email: "braismoure@mouredev.com" }
+
+console.log(person4)
+
+// Copia de objects
+
+let person5 = { ...person }
+
+console.log(person5)
+````
+
+**Comparación entre Destructuring y Spreading**
+
+Ambas sintaxis son utilizadas para trabajar con objetos y arreglos, pero tienen objetivos diferentes:
+
+- La desestructuración se utiliza para extraer valores de objetos y arreglos y asignarlos a variables individuales.
+- La expansión se utiliza para expandir objetos y arreglos en lugares donde se esperan argumentos o elementos.
+
+**Métodos y Propiedades**
+
+No hay métodos específicos para la desestructuración y la expansión, ya que son sintaxis especiales que se utilizan en el lenguaje. Sin embargo, hay algunas propiedades y métodos relacionados que se pueden utilizar en combinación con la desestructuración y la expansión:
+
+- `Object.assign()`: se utiliza para copiar propiedades de un objeto a otro.
+- `Array.prototype.concat()`: se utiliza para concatenar arreglos.
+- `Array.prototype.unshift()`: se utiliza para insertar elementos al inicio de un arreglo.
+
+---
+
+### Clases
+
+una clase (class) es una plantilla para crear objetos que comparten una estructura y comportamiento comunes. Las clases se introdujeron en JavaScript con la versión ECMAScript 2015 (ES6).
+
+**Diferencia con primitivos**
+
+Los primitivos (primitive types) son tipos de datos básicos en JavaScript, como números (Number), cadenas de texto (String), booleanos (Boolean), null y undefined. Estos tipos de datos no tienen propiedades ni métodos asociados.
+
+Por otro lado, las clases y objetos son instancias de una plantilla que define una estructura y comportamiento específicos. Las clases y objetos tienen propiedades (datos) y métodos (funciones) asociados.
+
+**Diferencia con objetos**
+
+En JavaScript, un objeto (object) es una instancia de una clase o una colección de pares clave-valor. Los objetos pueden ser creados utilizando la sintaxis de objeto literal `{}` o mediante la creación de una instancia de una clase utilizando el operador `new`.
+
+La principal diferencia entre una clase y un objeto es que una clase es una plantilla para crear objetos, mientras que un objeto es una instancia específica de esa plantilla.
+
+**Descripción de métodos, propiedades y funcionalidad**
+
+**Métodos**: Son funciones que se definen dentro de una clase y se utilizan para realizar acciones específicas en objetos instanciados de esa clase. Los métodos pueden acceder y modificar las propiedades del objeto.
+
+**Propiedades**: Son los datos asociados a un objeto. Las propiedades pueden ser de tipo primitivo o ser objetos complejos.
+
+**Funcionalidad**: La funcionalidad de una clase se refiere a la capacidad de crear objetos que pueden realizar acciones específicas y tener un comportamiento determinado.
+
+**Ejemplo de clase en JavaScript**
+
+```js
+class Persona {
+  // Propiedades
+  nombre;
+  edad;
+
+  // Constructor
+  constructor(nombre, edad) {
+    this.nombre = nombre;
+    this.edad = edad;
+  }
+
+// Método
+  saludar() {
+    console.log(`Hola, soy ${this.nombre} y tengo ${this.edad} años.`);
+  }
+}
+
+// Crear objeto instancia de la clase Persona
+const persona = new Persona('Juan', 30);
+persona.saludar(); // Output: Hola, soy Juan y tengo 30 años.
+```
+
+En este ejemplo, la clase `Persona` tiene dos propiedades (`nombre` y `edad`) y un método (`saludar`). El constructor se utiliza para inicializar las propiedades cuando se crea un objeto instancia de la clase. El método `saludar` utiliza las propiedades del objeto para generar un mensaje de saludo.
+
+La palabra reservada `this` suele apuntar a la instancia de la clase, no a la clase en sí. Cuando crea una nueva instancia de una clase, `this` se enlaza a esa instancia, permitiéndole acceder a sus propiedades y métodos.
+
+#### **Estructura básica de una clase**
+
+```js
+class NombreClase {
+  // Propiedades y métodos de la clase
+}
+```
+
+Donde `NombreClase` es el nombre de la clase.
+
+**Estructura de una clase**
+
+La estructura de una clase en JavaScript puede incluir:
+
+- **Propiedades**: variables que se definen dentro de la clase y se utilizan para almacenar valores.
+- **Métodos**: funciones que se definen dentro de la clase y se utilizan para realizar acciones.
+- **Constructor**: un método especial que se llama cuando se crea un objeto a partir de la clase.
+
+#### **Constructor**
+
+Un constructor en JavaScript es un método especial que se llama cuando se crea un objeto a partir de una clase. El constructor se utiliza para inicializar las propiedades de la clase y se define con la palabra clave `constructor`. La estructura básica de un constructor es la siguiente:
+
+```js
+class NombreClase {
+  constructor(parametros) {
+    // Inicialización de propiedades
+  }
+}
+```
+
+Donde `parametros` son los parámetros que se pasan al constructor cuando se crea un objeto.
+
+````js
+// Plantilla (Clase)
+class Person {
+    constructor(name, age, alias) {
+        this.name = name
+        this.age = age
+        this.alias = alias
+    }
+}
+````
+
+#### Instanciación
+
+````js
+// Sintaxis
+
+let person = new Person("Brais", 37, "MoureDev")
+let person2 = Person("Brais", 37, "MoureDev")
+
+console.log(person)  // Person { name: 'Brais', age: 37, alias: 'MoureDev' }
+console.log(person2) // Error
+````
+
+en otro caso, si se desea generar un nueva clase. En el constructor se puede asignar valores predefinidos a los parámetros en el caso que se instancie sin un parámetro. 
+
+````js
+// Valores por defecto
+
+class DefaultPerson {
+    constructor(name = "Sin nombre", age = 0, alias = "Sin alias") {
+        this.name = name
+        this.age = age
+        this.alias = alias
+    }
+}
+let person3 = new DefaultPerson("Brais", 37)
+console.log(person3) // DefaultPerson { name: 'Brais', age: 37, alias: 'Sin alias' }
+
+// Acceso a propiedades
+
+console.log(person3.alias)
+console.log(person3["alias"])
+person3.alias = "MoureDev"
+console.log(person3.alias)
+````
+
+#### Funciones
+
+````js
+// Funciones en clases
+
+class PersonWithMethod {
+    constructor(name, age, alias) {
+        this.name = name
+        this.age = age
+        this.alias = alias
+    }
+    walk() {
+        console.log("La persona camina.")
+    }
+}
+let person4 = new PersonWithMethod("Brais", 37, "MoureDev")
+person4.walk()
+````
+
+#### Propiedades Publicas y Privadas
+
+##### **Propiedades públicas**
+
+Las propiedades públicas, son propiedades que se pueden acceder directamente desde una instancia de una clase. Se definen utilizando la palabra clave `this` dentro del constructor de la clase o utilizando un inicializador de propiedades.
+
+Ejemplo:
+
+```js
+class Persona {
+  constructor(nombre, edad) {
+    this.nombre = nombre;
+    this.edad = edad;
+  }
+}
+
+const persona = new Persona('Juan', 30);
+console.log(persona.nombre); // Juan
+console.log(persona.edad); // 30
+```
+
+En este ejemplo, `nombre` y `edad` son propiedades normales que se pueden acceder directamente desde la instancia `persona`.
+
+La desventaja de las clases publicas es que son de fácil acceso a las propiedades lo cual pueden ser modificarlas o impresas, no resguardando la integridad de la información.  
+
+##### **Propiedades Privadas**
+
+Las propiedades privadas, por otro lado, son propiedades que no se pueden acceder directamente desde una instancia de una clase. Se definen utilizando un símbolo de hash `#` antes del nombre de la propiedad, o sea, debe inicializarse.
+
+Ejemplo:
+
+```js
+class Persona {
+    #contraseña;
+  
+    constructor(nombre, edad, contraseña) {
+      this.nombre = nombre;
+      this.edad = edad;
+      this.#contraseña = contraseña;
+    }
+  
+    autenticar(contraseña) {
+      return this.#contraseña === contraseña;
+    }
+  }
+  
+  const persona = new Persona('Juan', 30, 'miclave secreta');
+  console.log(persona.contraseña); // undefined
+  console.log(persona.autenticar('miclave secreta')); // true
+  console.log(persona);
+// Persona { nombre: 'Juan', edad: 30 }
+  persona.contraseña = "new clave Secreta" // nuevo prametro
+  console.log(persona);
+// Persona { nombre: 'Juan', edad: 30, 'contraseña': 'new clave Secreta' }
+```
+
+En este ejemplo, `contraseña` es una propiedad privada que no se puede acceder directamente desde la instancia `persona`. En su lugar, solo se puede acceder a través del método `autenticar`. Al intentar modificar la propiedad `contraseña`, lo que se genero fue agregar un nuevo parámetro, por lo que **`contraseña` no es lo mismo que `#contraseña`**.
+
+Nota que las propiedades privadas no están completamente soportadas en todos los navegadores y entornos, y actualmente son una propuesta de fase 3 en el estándar ECMAScript.
+
+**Propiedades Privadas en Clases de JavaScript**
+
+Las propiedades privadas en JavaScript son una forma de encapsular datos dentro de una clase, de manera que solo puedan ser accedidos a través de métodos específicos. Esto ayuda a proteger la integridad de los datos y a prevenir accesos no autorizados.
+
+**Definir Propiedades Privadas**
+
+Para definir una propiedad privada en una clase de JavaScript, se utiliza el símbolo de hash `#` antes del nombre de la propiedad. Por ejemplo:
+
+```js
+class Persona {
+  #nombre;
+  #edad;
+
+  constructor(nombre, edad) {
+    this.#nombre = nombre;
+    this.#edad = edad;
+  }
+}
+```
+
+En este ejemplo, `nombre` y `edad` son propiedades privadas que no pueden ser accedidas directamente desde fuera de la clase.
+
+##### Getters y Setters
+
+````js
+class GetSetPerson {
+    #name
+    #age
+    #alias
+    #bank
+    constructor(name, age, alias, bank) {
+        this.#name = name
+        this.#age = age
+        this.#alias = alias
+        this.#bank = bank
+    }
+}
+
+person6 = new GetSetPerson("Brais", 37, "MoureDev", "IBAN123456789")
+console.log(person6) // GetSetPerson {}
+````
+
+Como se observa en el siguiente caso el acceso a las propiedades `person6` nos muestra por console {} vacías. Para ello se recurre a ciertos métodos,
+
+**Acceder a Propiedades Privadas**
+
+Para acceder a una propiedad privada, se debe utilizar un método que esté definido dentro de la clase. Por ejemplo:
+
+```js
+class Persona {
+  #nombre;
+  #edad;
+
+  constructor(nombre, edad) {
+    this.#nombre = nombre;
+    this.#edad = edad;
+  }
+
+  getNombre() {
+    return this.#nombre;
+  }
+
+  getEdad() {
+    return this.#edad;
+  }
+}
+
+const persona = new Persona('Juan', 30);
+console.log(persona.getNombre()); // Juan
+console.log(persona.getEdad()); // 30
+```
+
+En este ejemplo, los métodos `getNombre()` y `getEdad()` permiten acceder a las propiedades privadas `nombre` y `edad`, respectivamente.
+
+**Modificar Propiedades Privadas**
+
+Para modificar una propiedad privada, se debe utilizar un método que esté definido dentro de la clase. Por ejemplo:
+
+```js
+class Persona {
+  #nombre;
+  #edad;
+
+  constructor(nombre, edad) {
+    this.#nombre = nombre;
+    this.#edad = edad;
+  }
+
+  setNombre(nombre) {
+    this.#nombre = nombre;
+  }
+
+  setEdad(edad) {
+    this.#edad = edad;
+  }
+}
+
+const persona = new Persona('Juan', 30);
+persona.setNombre('Pedro');
+persona.setEdad(31);
+console.log(persona.getNombre()); // Pedro
+console.log(persona.getEdad()); // 31
+```
+
+En este ejemplo, los métodos `setNombre()` y `setEdad()` permiten modificar las propiedades privadas `nombre` y `edad`, respectivamente.
+
+#### Herencia
+
+La herencia se refiere a la capacidad de una clase para heredar propiedades y métodos de otra clase. 
+
+##### **Herencia de propiedades públicas**
+
+En JavaScript, las propiedades públicas se definen directamente en el objeto o clase. Cuando una clase hereda de otra, automáticamente hereda todas las propiedades públicas de la clase padre.
+
+Aquí hay un ejemplo:
+
+```js
+class Persona {
+  constructor(nombre, edad) {
+    this.nombre = nombre;
+    this.edad = edad;
+  }
+
+  saludar() {
+    console.log(`Hola, mi nombre es ${this.nombre} y tengo ${this.edad} años.`);
+  }
+}
+
+class Estudiante extends Persona {
+  constructor(nombre, edad, carrera) {
+    super(nombre, edad);
+    this.carrera = carrera;
+  }
+
+  estudiar() {
+    console.log(`Estoy estudiando ${this.carrera}.`);
+  }
+}
+
+const estudiante = new Estudiante('Juan', 20, 'Ingeniería');
+estudiante.saludar(); // "Hola, mi nombre es Juan y tengo 20 años."
+estudiante.estudiar(); // "Estoy estudiando Ingeniería."
+```
+
+La palabra reservada `extends` se utiliza para crear una clase que es una subclase de otra clase. Esto permite heredar las propiedades y métodos de la clase padre y agregar nuevos o sobre escribir los existentes .
+
+La palabra reservada `super` se utiliza para acceder a las propiedades y métodos de una clase padre (o clase base) desde una clase hija (o clase derivada).
+
+Cuando se utiliza `super` en una clase hija, permite llamar a los métodos y acceder a las propiedades de la clase padre. Esto es especialmente útil cuando se quiere sobre escribir un método de la clase padre en la clase hija, pero aún se necesita llamar al método original de la clase padre.
+
+En este ejemplo, la clase `Estudiante` hereda las propiedades `nombre` y `edad` de la clase `Persona`, y también define su propia propiedad `carrera`. O sea, la clase `Estudiante` extiende la clase `Persona` y sobre escribe el método `estudiar`.
+
+````js
+// Clase Padre
+class Persona {
+  constructor(nombre) {
+    this.nombre = nombre;
+  }
+
+  saludar() {
+    console.log(`Hola, mi nombre es ${this.nombre}`);
+  }
+}
+
+// Clase Hija
+class Empleado extends Persona {
+  constructor(nombre, cargo) {
+    super(nombre); // Llama al constructor de la clase padre
+    this.cargo = cargo;
+  }
+
+  saludar() {
+    super.saludar(); // Llama al método saludar de la clase padre
+    console.log(`Mi cargo es ${this.cargo}`);
+  }
+}
+
+const empleado = new Empleado('Juan', 'Desarrollador');
+empleado.saludar();
+
+// Hola, mi nombre es Juan
+// Mi cargo es Desarrollador
+````
+
+En este ejemplo, la clase `Empleado` hereda de la clase `Persona` y utiliza `super` para llamar al constructor y al método `saludar` de la clase padre.
+
+##### **Herencia de propiedades privadas**
+
+En JavaScript, las propiedades privadas se definen utilizando el símbolo `#` antes del nombre de la propiedad. Estas propiedades solo son accesibles dentro de la clase que las define y no se heredan automáticamente.
+
+Aquí hay un ejemplo:
+
+```js
+class Persona {
+  #dni;
+  constructor(nombre, edad, dni) {
+    this.nombre = nombre;
+    this.edad = edad;
+    this.#dni = dni;
+  }
+
+  getDni() {
+    return this.#dni;
+  }
+}
+
+class Estudiante extends Persona {
+  constructor(nombre, edad, carrera, dni) {
+    super(nombre, edad, dni);
+    this.carrera = carrera;
+  }
+
+  estudiar() {
+    console.log(`Estoy estudiando ${this.carrera}.`);
+  }
+}
+
+const estudiante = new Estudiante('Juan', 20, 'Ingeniería', '12345678');
+console.log(estudiante.getDni()); // "12345678"
+```
+
+En este ejemplo, la clase `Persona` define una propiedad privada `#dni`, que solo es accesible a través del método `getDni()`. La clase `Estudiante` hereda de `Persona`, pero no tiene acceso directo a la propiedad `#dni`. Sin embargo, puede llamar al método `getDni()` para obtener el valor de la propiedad privada.
+
+Otro ejemplo:
+
+```js
+class Animal {
+  #nombre;
+
+  constructor(nombre) {
+    this.#nombre = nombre;
+  }
+
+  getNombre() {
+    return this.#nombre;
+  }
+}
+
+class Perro extends Animal {
+  #raza;
+
+  constructor(nombre, raza) {
+    super(nombre);
+    this.#raza = raza;
+  }
+
+  getRaza() {
+    return this.#raza;
+  }
+}
+
+const perro = new Perro('Fido', 'Golden Retriever');
+console.log(perro.getNombre()); // Fido
+console.log(perro.getRaza()); // Golden Retriever
+```
+
+En este ejemplo, la clase `Perro` hereda de la clase `Animal` y utiliza la propiedad privada `nombre` de la clase `Animal`. La clase `Perro` también define su propia propiedad privada `raza`.
+
+**Conclusión**
+
+Las propiedades privadas en JavaScript son una forma de encapsular datos dentro de una clase, de manera que solo puedan ser accedidos a través de métodos específicos. Esto ayuda a proteger la integridad de los datos y a prevenir accesos no autorizados. Las propiedades privadas se pueden utilizar en clases que heredan de otras clases y se pueden acceder y modificar a través de métodos definidos dentro de la clase.
+
+#### Métodos Estáticos
+
+Los métodos estáticos son métodos que se definen en una clase, pero no se instancian con cada objeto creado a partir de esa clase. En otras palabras, los métodos estáticos se llaman directamente en la clase, no en una instancia de la clase.
+
+Para definir un método estático en una clase JavaScript, se utiliza la palabra clave `static` antes del nombre del método. Por ejemplo:
+
+```js
+class MyClass {
+  static myStaticMethod() {
+    console.log("Este es un método estático");
+  }
+}
+```
+
+Luego, para llamar al método estático, se utiliza el nombre de la clase, no una instancia de la clase:
+
+```js
+MyClass.myStaticMethod(); // Output: "Este es un método estático"
+```
+
+Notar que no se necesita crear una instancia de la clase para llamar al método estático.
+
+Los métodos estáticos son útiles cuando se necesita una función que no dependa de una instancia específica de la clase, como una función de utilidad o una función que devuelve un valor constante.
+
+````js
+// Métodos estáticos
+
+class MathOperations {
+    static sum(a, b) {
+        return a + b
+    }
+}
+console.log(MathOperations.sum(5, 10)) //15
+````
+
+---
 
 ### Set
 
@@ -1926,6 +3012,8 @@ for (let entrada of miSet.entries()) {
 const miSet = new Set([1, 2, 3]); 
 miSet.forEach(elemento => console.log(elemento)); // 1, 2, 3
 ````
+
+---
 
 ### Map
 
@@ -2080,6 +3168,844 @@ Aquí hay algunas diferencias clave entre `Map` y objetos:
 
 En resumen, `Map` es una estructura de datos poderosa que proporciona una forma de almacenar pares clave-valor con claves que no son cadenas de texto, iterar sobre los pares clave-valor en un orden específico y convertir a arreglos u objetos.
 
+---
+
+### DOM
+
+El DOM (Document Object Model) es una representación en memoria del documento HTML, que permite a los desarrolladores acceder y manipular los elementos del documento utilizando JavaScript.
+
+Cuando un navegador carga un documento HTML, crea un objeto en memoria que representa la estructura del documento, incluyendo todos los elementos HTML, sus atributos y contenido. Este objeto se conoce como el DOM.
+
+El DOM es una interfaz de programación que permite a los desarrolladores acceder y manipular los elementos del documento utilizando métodos y propiedades. De esta manera, los desarrolladores pueden crear scripts que interactúen con el documento, como por ejemplo:
+
+- Agregar o eliminar elementos del documento
+- Modificar el contenido o los atributos de los elementos
+- Agregar eventos a los elementos para responder a acciones del usuario
+- Realizar búsquedas y selecciones de elementos en el documento
+
+El DOM es una parte fundamental de la programación web, ya que permite a los desarrolladores crear aplicaciones web dinámicas y interactivas.
+
+Algunos conceptos clave relacionados con el DOM son:
+
+- **Nodos**: Los elementos del documento se representan como nodos en el DOM. Cada nodo tiene una serie de propiedades y métodos que permiten acceder y manipular el elemento.
+- **Elementos**: Los elementos HTML se representan como nodos en el DOM. Cada elemento tiene una serie de propiedades y métodos que permiten acceder y manipular el elemento.
+- **Atributos**: Los atributos de los elementos HTML se representan como propiedades en el DOM.
+- **Eventos**: Los eventos se utilizan para responder a acciones del usuario, como clicks o cambios en los formularios.
+
+#### DOM HTML & JavaScript
+
+La diferencia entre el DOM en HTML y JavaScript es fundamentalmente una cuestión de perspectiva y de cómo se accede y se manipula el DOM.
+
+**HTML:**
+
+En HTML, el DOM se refiere a la estructura de elementos que componen el documento HTML. Los elementos HTML, como `<html>`, `<body>`, `<p>`, `<img>`, etc., se organizan en una estructura de árbol, donde cada elemento es un nodo en el árbol. El DOM en HTML se enfoca en la estructura y el contenido del documento, y se utiliza para definir la presentación y el contenido de la página.
+
+En otras palabras, el DOM en HTML es la representación estática del documento, que se carga en la memoria del navegador cuando se carga la página.
+
+**JavaScript:**
+
+En JavaScript, el DOM se refiere a la representación dinámica del documento HTML en memoria. Cuando se carga una página web, el navegador crea un objeto DOM que representa la estructura y el contenido del documento HTML. El DOM en JavaScript es una representación en vivo del documento, que se puede acceder y manipular mediante código JavaScript.
+
+El DOM en JavaScript se utiliza para interactuar con el contenido de la página, realizar cambios dinámicos, responder a eventos del usuario, y mucho más. Los desarrolladores pueden acceder y manipular el DOM utilizando métodos y propiedades de JavaScript, como `document.getElementById()`, `element.innerHTML`, `addEventListener()`, etc.
+
+En resumen, la principal diferencia entre el DOM en HTML y JavaScript es que:
+
+- El DOM en HTML se enfoca en la estructura y el contenido estático del documento.
+- El DOM en JavaScript se enfoca en la representación dinámica del documento en memoria, que se puede acceder y manipular mediante código JavaScript.
+
+Ambas perspectivas del DOM son importantes y se complementan entre sí. El DOM en HTML proporciona la estructura y el contenido básico de la página, mientras que el DOM en JavaScript permite interactuar y personalizar la página de manera dinámica.
+
+**Cómo acceder al DOM en JavaScript**
+
+En JavaScript, puedes acceder al DOM mediante la variable `document`. Esta variable es un objeto que representa el documento HTML actual y proporciona métodos y propiedades para interactuar con él.
+
+````js
+console.dir(document)
+````
+
+El `console.dir(document)` es un comando de depuración en JavaScript que nos permite visualizar la estructura y contenido del objeto `document` en la consola del navegador.
+
+Cuando se ejecuta `console.dir(document)`, se muestra una representación en forma de árbol del objeto `document`, que incluye sus propiedades y métodos. Esto puede ser útil para:
+
+- Inspeccionar la estructura del documento HTML
+- Verificar las propiedades y atributos de los elementos del documento
+- Depurar problemas relacionados con el acceso a elementos del documento
+
+#### Métodos y propiedades
+
+Métodos y propiedades más empleados:
+
+- `document.getElementById()`: Devuelve un elemento con el ID especificado.
+- `document.querySelector()`: Devuelve el primer elemento que coincide con el selector especificado.
+- `element.innerHTML`: Establece o devuelve el contenido HTML de un elemento.
+- `element.addEventListener()`: Agrega un evento a un elemento.
+- `element.style`: Establece o devuelve el estilo CSS de un elemento.
+
+#### **Ejemplos de uso del DOM**
+
+1. `document.getElementById(id)`: devuelve el elemento con el id especificado.
+
+````html
+<!-- HTML -->
+<div id="miId">Este es mi id</div>
+<div id="miDiv">Este es mi div</div>
+````
+
+```js
+const elemento = document.getElementById('miId');
+console.log(elemento); // imprime el elemento con el id "miId"
+
+const elemento = document.getElementById('miId');
+elemento.innerHTML = '<p>Hola, mundo!</p>';
+
+<!-- JavaScript -->
+const miDiv = document.getElementById('miDiv');
+console.log(miDiv); // <div id="miDiv">Este es mi div</div>
+```
+
+> si no se encuentra el id en HTML el cual llamamos desde JS, por console nos muestra un null sino el document del elemento que nombramos.
+
+2. `document.getElementsByClassName(clase)`: devuelve una lista de elementos con la clase especificada.
+
+````html
+<!-- HTML -->
+<div class="miClase">Este es mi div 1</div>
+<div class="miClase">Este es mi div 2</div>
+````
+
+
+```js
+const elementos = document.getElementsByClassName('miClase');
+console.log(elementos); // imprime una lista de elementos con la clase "miClase"
+
+<!-- JavaScript -->
+const misDivs = document.getElementsByClassName('miClase');
+console.log(misDivs); // HTMLCollection [div.miClase, div.miClase]
+```
+
+3. `document.getElementsByTagName(etiqueta)`: devuelve una lista de elementos con la etiqueta especificada.
+
+````html
+<!-- HTML -->
+<p>Este es mi párrafo 1</p>
+<p>Este es mi párrafo 2</p>
+
+````
+
+````js
+<!-- JavaScript -->
+const misParrafos = document.getElementsByTagName('p');
+console.log(misParrafos); // HTMLCollection [p, p]
+
+````
+
+4. `document.querySelector(selector)`: devuelve el primer elemento que coincide con el selector CSS especificado.
+
+````html
+<!-- HTML -->
+<div class="miClase">Este es mi div</div>
+````
+
+````js
+<!-- JavaScript -->
+const miDiv = document.querySelector('.miClase');
+console.log(miDiv); // <div class="miClase">Este es mi div</div>
+````
+
+- `document.querySelectorAll(selector)`: devuelve una lista de elementos que coinciden con el selector CSS especificado.
+
+````html
+<!-- HTML -->
+<div class="miClase">Este es mi div 1</div>
+<div class="miClase">Este es mi div 2</div>
+````
+
+````js
+<!-- JavaScript -->
+const misDivs = document.querySelectorAll('.miClase');
+console.log(misDivs); // NodeList [div.miClase, div.miClase]
+````
+5. `element.addEventListener(evento, función)`: agrega un evento al elemento.
+
+```js
+<!-- HTML -->
+<button id="miBoton">Click me</button>
+
+<!-- JavaScript -->
+const miBoton = document.getElementById('miBoton');
+miBoton.addEventListener('click', function() {
+  console.log('Botón clickeado!');
+});
+
+const elemento = document.getElementById('miId');
+elemento.addEventListener('click', function() {
+  console.log('Se ha hecho clic en el elemento');
+});
+```
+
+6. `document.createElement()`:
+
+```js
+const nuevoElemento = document.createElement('p');
+nuevoElemento.textContent = 'Hola, mundo!';
+document.body.appendChild(nuevoElemento);
+```
+
+7. `element.innerHTML`: devuelve o establece el contenido HTML del elemento. O sea, que lo interpreta el string y devolver hasta un elemento html.
+
+````html
+<!-- HTML -->
+<div id="miDiv">Este es mi div</div>
+````
+
+```js
+<!-- JavaScript -->
+const miDiv = document.getElementById('miDiv');
+miDiv.innerHTML = 'Este es mi nuevo contenido';
+console.log(miDiv.innerHTML); // "Este es mi nuevo contenido"
+```
+
+Otro ejemplo:
+
+````html
+<h1 id="titulo">TITULO</h1>
+<div id="caja"></div>
+````
+
+````js
+const productos = [...]
+
+let listaDeProductosHTML = ''
+productos.forEach(producto => 
+    listaDeProductosHTML = listaDeProductosHTML +  `
+        <div class="producto">
+            <h2>${producto.nombre}</h2>
+            <img src="${producto.thumbnail}" alt="${producto.nombre}">
+            <br>
+            <span>Precio: $${producto.precio}</span>
+            <br>
+            <span>Stock Disponible: ${producto.stock}</span>
+            <br>
+            <button>comprar</button>
+            <hr>
+        </div>
+    `
+)
+caja.innerHTML = listaDeProductosHTML
+
+/*Optimizacion. Se arma una lista de string y se guarda (reasigna) una sola veces en caja.innerHTML*/
+````
+
+> En el elemento div del HTML se incorporaría este forEach armado en JS. este se repetirá tantos elementos haya en el array productos.
+
+8. `element.innerText`:  devuelve o establece el contenido de texto del elemento y todos sus hijos.
+
+````html
+<!-- HTML -->
+<div id="miDiv">
+  <p>Hola, mundo!</p>
+  <span>Este es un texto dentro de un span</span>
+</div>
+````
+
+````js
+<!-- JavaScript -->
+// Seleccionamos el elemento con id "miDiv"
+const miDiv = document.getElementById('miDiv');
+
+// Accedemos al texto contenido dentro del elemento
+const texto = miDiv.innerText;
+
+//Establece nuevo contenido
+miDiv.innerText = 'Establecemos contenido'
+
+// Mostramos el texto en la consola
+console.log(texto);
+````
+
+9. `element.textContent`: devuelve o establece el contenido de texto del elemento.
+
+```js
+<!-- HTML -->
+<div id="miDiv">Este es mi div</div>
+
+<!-- JavaScript -->
+const miDiv = document.getElementById('miDiv');
+miDiv.textContent = 'Este es mi nuevo contenido';
+console.log(miDiv.textContent); // "Este es mi nuevo contenido"
+```
+
+10. `element.setAttribute(atributo, valor)`: establece el valor de un atributo del elemento.
+
+```js
+<!-- HTML -->
+<div id="miDiv">Este es mi div</div>
+
+<!-- JavaScript -->
+const miDiv = document.getElementById('miDiv');
+miDiv.setAttribute('class', 'miNuevaClase');
+console.log(miDiv.getAttribute('class')); // "miNuevaClase"
+```
+
+11. `element.getAttribute(atributo)`: devuelve el valor de un atributo del elemento.
+
+```js
+<!-- HTML -->
+<div id="miDiv" class="miClase">Este es mi div</div>
+
+<!-- JavaScript -->
+const miDiv = document.getElementById('miDiv');
+console.log(miDiv.getAttribute('class')); // "miClase"
+```
+
+
+12. `element.removeEventListener(evento, función)`: elimina un evento del elemento
+
+```js
+<!-- HTML -->
+<button id="miBoton">Click me</button>
+
+<!-- JavaScript -->
+const miBoton = document.getElementById('miBoton');
+const handleClick = function() {
+  console.log('Botón clickeado!');
+};
+miBoton.addEventListener('click', handleClick);
+// ...
+```
+
+Estos son solo algunos ejemplos básicos de cómo usar y emplear el DOM en JavaScript. El DOM es una herramienta muy poderosa que te permite interactuar con la estructura y el contenido de un documento de manera programática.
+
+#### Iteración 
+
+Iterar sobre los elementos del DOM (Document Object Model) utilizando varios métodos. Ejemplos:
+
+**1. Utilizando `forEach`**
+
+```js
+const elements = document.querySelectorAll('div'); // selecciona todos los elementos div
+elements.forEach(element => {
+  console.log(element.textContent); // imprime el texto de cada elemento div
+	}
+)
+```
+
+**2. Utilizando `for...of`**
+
+```js
+const elements = document.querySelectorAll('div'); // selecciona todos los elementos div
+for (const element of elements) {
+  console.log(element.textContent); // imprime el texto de cada elemento div
+}
+```
+
+**3. Utilizando `for` tradicional**
+
+```js
+const elements = document.querySelectorAll('div'); // selecciona todos los elementos div
+for (let i = 0; i < elements.length; i++) {
+  console.log(elements[i].textContent); // imprime el texto de cada elemento div
+}
+```
+
+**4. Utilizando `NodeList.prototype.forEach()` (solo para NodeList)**
+
+```js
+document.querySelectorAll('div').forEach(element => {
+  console.log(element.textContent); // imprime el texto de cada elemento div
+});
+```
+
+Recuerda que `querySelectorAll` devuelve una NodeList, que es una colección de elementos del DOM. Los métodos `forEach` y `for...of` son compatibles con NodeList.
+
+#### SessionStorage y LocalStorage
+
+**¿Qué son SessionStorage y LocalStorage?**
+
+SessionStorage y LocalStorage son dos tipos de almacenamiento web que permiten a los desarrolladores web almacenar datos en el lado del cliente, es decir, en el navegador del usuario. Estos datos se almacenan en forma de clave-valor y se pueden acceder y manipular utilizando JavaScript.
+
+**Diferencias entre SessionStorage y LocalStorage**
+
+La principal diferencia entre SessionStorage y LocalStorage es la duración de la vida de los datos almacenados:
+
+- **SessionStorage**: Los datos almacenados en SessionStorage se eliminan cuando el usuario cierra la sesión actual (es decir, cuando cierra el navegador o la pestaña). Los datos se almacenan solo durante la sesión actual y no se conservan entre sesiones.
+- **LocalStorage**: Los datos almacenados en LocalStorage se conservan incluso después de que el usuario cierra el navegador o la pestaña. Los datos se almacenan de forma permanente en el navegador del usuario, a menos que se eliminen explícitamente.
+
+##### Métodos
+
+**SessionStorage**
+
+- **setItem(key, value)**: Almacena un valor en SessionStorage con una clave específica.
+- **getItem(key)**: Recupera el valor almacenado en SessionStorage con una clave específica.
+- **removeItem(key)**: Elimina el valor almacenado en SessionStorage con una clave específica.
+- **clear()**: Elimina todos los valores almacenados en SessionStorage.
+
+Ejemplo:
+
+```js
+// Almacenar un valor en SessionStorage
+sessionStorage.setItem('nombre', 'Juan');
+
+// Recuperar un valor de SessionStorage
+console.log(sessionStorage.getItem('nombre')); // Output: Juan
+
+// Eliminar un valor de SessionStorage
+sessionStorage.removeItem('nombre');
+
+// Eliminar todos los valores de SessionStorage
+sessionStorage.clear();
+```
+
+**LocalStorage**
+
+- **setItem(key, value)**: Almacena un valor en LocalStorage con una clave específica.
+- **getItem(key)**: Recupera el valor almacenado en LocalStorage con una clave específica.
+- **removeItem(key)**: Elimina el valor almacenado en LocalStorage con una clave específica.
+- **clear()**: Elimina todos los valores almacenados en LocalStorage.
+
+Ejemplo:
+
+```js
+// Almacenar un valor en LocalStorage
+localStorage.setItem('apellido', 'Pérez');
+
+// Recuperar un valor de LocalStorage
+console.log(localStorage.getItem('apellido')); // Output: Pérez
+
+// Eliminar un valor de LocalStorage
+localStorage.removeItem('apellido');
+
+// Eliminar todos los valores de LocalStorage
+localStorage.clear();
+```
+
+**Ventajas y desventajas**
+
+Ventajas:
+
+- Permite almacenar datos en el lado del cliente, lo que reduce la carga en el servidor.
+- Permite acceder a los datos almacenados en cualquier momento, sin necesidad de realizar una solicitud al servidor.
+- Es una forma segura de almacenar datos, ya que los datos se almacenan en el navegador del usuario y no se envían al servidor.
+
+Desventajas:
+
+- los datos almacenados en SessionStorage y LocalStorage solo pueden guardar strings (no objetos)
+- Los datos almacenados en SessionStorage y LocalStorage no son persistentes, es decir, se eliminan cuando el usuario cierra el navegador o la pestaña.
+- Los datos almacenados en SessionStorage y LocalStorage no se pueden compartir entre diferentes sitios web o aplicaciones.
+- Los datos almacenados en SessionStorage y LocalStorage pueden ser eliminados por el usuario o por el navegador.
+
+En resumen, SessionStorage y LocalStorage son dos formas de almacenar datos en el lado del cliente, con SessionStorage siendo una forma temporal y LocalStorage siendo una forma permanente. Ambas formas tienen sus ventajas y desventajas, y se deben utilizar según las necesidades específicas de la aplicación.
+
+##### Ejemplo: Selección de tema de la página
+
+- Inicialmente:
+
+![image-20240828082801243](C:\Users\ribas\AppData\Roaming\Typora\typora-user-images\image-20240828082801243.png)
+
+````js
+let theme = localStorage.getItem('theme')
+console.log(theme)
+if(!theme){
+    theme = prompt('Seleccione un tema:\n-blanco\n-oscuro')
+    /* Si quieren validan */
+    localStorage.setItem('theme', theme)
+}
+````
+
+En el code se guarda el tema de la pagina en el localStorage.
+
+![image-20240826113651451](C:\Users\ribas\AppData\Roaming\Typora\typora-user-images\image-20240826113651451.png)
+
+````js
+<!--Html-->
+<style>
+    .mode-oscuro{
+    	color: white;
+        background-color:black;
+    }
+    .modo-claro{
+        color: black;
+        background-color: white;
+    }
+</style>
+<body id="body">
+    
+<!--javaScript-->
+const body = document.getElementById('body')
+body.classList.add('mode-' + theme)// se llama a la lista de clases
+const cambiarTheme = () => {
+    theme = prompt('Seleccione un tema:\n-blanco\n-oscuro')
+    localStorage.setItem('theme', theme)
+    body.classList.add('mode-' + theme)
+}
+````
+
+Esta parte del code permite solicitar tipo de tema. Una ves guardado en el localStorage podemos traer 
+
+![image-20240828084129183](C:\Users\ribas\AppData\Roaming\Typora\typora-user-images\image-20240828084129183.png)
+
+#### classList
+
+La propiedad `classList` es una forma conveniente de trabajar con las clases CSS de un elemento en JavaScript. Aquí te presento algunos otros métodos y propiedades que se pueden aplicar:
+
+**Métodos**
+
+- `add()`: Agrega una o varias clases a la lista de clases del elemento.
+
+```js
+body.classList.add('mode-claro', 'otra-clase');
+```
+
+- `remove()`: Elimina una o varias clases de la lista de clases del elemento.
+
+```js
+body.classList.remove('mode-oscuro', 'otra-clase');
+```
+
+- `toggle()`: Alterna la presencia de una clase en la lista de clases del elemento.
+
+```js
+body.classList.toggle('mode-oscuro');
+```
+
+- `contains()`: Verifica si una clase está presente en la lista de clases del elemento.
+
+```js
+if (body.classList.contains('mode-oscuro')) {
+  console.log('La clase mode-oscuro está presente');
+}
+```
+
+- `replace()`: Reemplaza una clase por otra en la lista de clases del elemento.
+
+```js
+body.classList.replace('mode-oscuro', 'mode-claro');
+```
+
+**Propiedades**
+
+- `length`: Devuelve el número de clases en la lista de clases del elemento.
+
+```js
+console.log(body.classList.length); // número de clases
+```
+
+- `item()`: Devuelve la clase en la posición especificada en la lista de clases del elemento.
+
+```js
+console.log(body.classList.item(0)); // primera clase
+```
+
+- `entries()`, `keys()`, `values()`: Devuelven iteradores para recorrer la lista de clases del elemento.
+
+```js
+for (const clase of body.classList.values()) {
+  console.log(clase);
+}
+```
+
+> Recuerda que `classList` es una propiedad de **solo lectura**, por lo que *no se puede asignar un nuevo valor directamente*. En su lugar, debes utilizar los métodos proporcionados para modificar la lista de clases. O sea, para modificar un classList hay que removerlo (eliminarlo).
+
+#### Ejemplo
+
+- Paso a Paso botón modo tema
+
+````html
+<body id="body">
+    <button id="button" type="button">Cambiar Tema</button>
+</body>
+````
+
+````js
+/*SessionStorage & LocalStorage*/
+// Tema de la pagina
+let theme = localStorage.getItem('theme')
+console.log(theme)
+if(!theme){
+    theme = prompt('Seleccione un tema:\n-blanco\n-oscuro')
+    /* Si quieren validan */
+    localStorage.setItem('theme', theme)
+}
+
+````
+
+**1. `let theme = localStorage.getItem('theme')`**
+
+- `localStorage` es un objeto que permite acceder al almacenamiento local del navegador.
+- `getItem` es un método que devuelve el valor asociado a una clave específica en el almacenamiento local.
+- `'theme'` es la clave que se utiliza para almacenar el tema de la página.
+- `theme` es la variable que almacena el valor devuelto por `getItem`.
+
+**2. `if(!theme){...}`**
+
+- `!theme` es una condición que verifica si el valor de `theme` es `null` o `undefined`.
+- Si la condición es verdadera, se ejecuta el código dentro del bloque `if`.
+
+**3. `theme = prompt('Seleccione un tema:\n-blanco\n-oscuro')`**
+
+- `prompt` es un método que muestra un cuadro de diálogo que solicita al usuario que ingrese un valor.
+- El valor ingresado por el usuario se almacena en la variable `theme`.
+
+**4. `localStorage.setItem('theme', theme)`**
+
+- `setItem` es un método que almacena un valor en el almacenamiento local.
+- `'theme'` es la clave que se utiliza para almacenar el valor.
+- `theme` es el valor que se almacena.
+
+````js
+const body = document.getElementById('body')
+body.classList.add('mode-' + theme)// se llama a la lista de clases
+const button = document.getElementById('button')
+button.addEventListener('click', cambiarTheme);
+````
+
+**5. `const body = document.getElementById('body')`**
+
+- `document` es el objeto que representa el documento HTML.
+- `getElementById` es un método que devuelve el elemento HTML con el ID especificado.
+- `'body'` es el ID del elemento que se busca.
+- `body` es la variable que almacena el elemento devuelto.
+
+**6. `body.classList.add('mode-' + theme)`**
+
+- `classList` es una propiedad que devuelve una lista de clases CSS que se han aplicado al elemento.
+- `add` es un método que agrega una clase CSS a la lista de clases.
+- `'mode-' + theme` es la clase CSS que se agrega.
+
+![image-20240831173507835](C:\Users\ribas\AppData\Roaming\Typora\typora-user-images\image-20240831173507835.png)
+
+> class= "mode-null" debido a que no se indico en el prompt el theme.
+>
+> class = "mode-oscuro" se indico modo oscuro en el prompt.
+
+**7. `const button = document.getElementById('button')`**
+
+- Se busca el elemento HTML con el ID `'button'` y se almacena en la variable `button`.
+
+**8. `button.addEventListener('click', cambiarTheme);`**
+
+- `button` es el elemento HTML que representa el botón "Cambiar Tema".
+- `addEventListener` es un método que permite agregar un evento a un elemento HTML.
+- `'click'` es el tipo de evento que se va a escuchar (en este caso, un clic en el botón).
+- `cambiarTheme` es la función que se va a ejecutar cuando se produzca el evento (en este caso, cuando se haga clic en el botón).
+
+````js
+function cambiarTheme() {
+    if (body.classList.contains('modo-claro')) {
+        // Si la tiene, la removemos y agregamos la clase "mode-oscuro"
+        body.classList.remove('modo-claro');
+        body.classList.add('mode-oscuro');
+        titulo.classList.add('mode-oscuro');
+        caja.classList.add('mode-oscuro');
+    } else {
+        // Si no la tiene, removemos la clase "mode-oscuro" y agregamos la clase "modo-claro"
+        body.classList.remove('mode-oscuro');
+        body.classList.add('modo-claro');
+        titulo.classList.remove('mode-oscuro');
+        caja.classList.remove('mode-oscuro');
+    }
+}
+````
+
+**9. `function cambiarTheme() { ... }`**
+
+- `CallBack`
+- `cambiarTheme` es el nombre de la función que se va a ejecutar cuando se haga clic en el botón.
+
+**10. `if (body.classList.contains('modo-claro')) { ... }`**
+
+- `body` es el elemento HTML que representa el cuerpo de la página (en este caso, el elemento `<body>`).
+- `classList` es una propiedad que devuelve una lista de clases CSS que se han aplicado al elemento.
+- `contains` es un método que verifica si una clase específica está presente en la lista de clases.
+- `'modo-claro'` es la clase CSS que se va a verificar.
+- Si la clase `'modo-claro'` está presente, se ejecuta el código dentro del bloque `if`.
+
+![image-20240831175444304](C:\Users\ribas\AppData\Roaming\Typora\typora-user-images\image-20240831175444304.png)
+
+**11. `body.classList.remove('modo-claro');`**
+
+- `remove` es un método que elimina una clase CSS de la lista de clases del elemento.
+- `'modo-claro'` es la clase CSS que se va a eliminar.
+
+**12. `body.classList.add('mode-oscuro');`**
+
+- `add` es un método que agrega una clase CSS a la lista de clases del elemento.
+- `'mode-oscuro'` es la clase CSS que se va a agregar.
+
+**13. `titulo.classList.add('mode-oscuro');` y `caja.classList.add('mode-oscuro');`**
+
+- Se agregan las mismas clases CSS a los elementos `titulo` y `caja`.
+
+**14. `} else { ... }`**
+
+- Si la clase `'modo-claro'` no está presente, se ejecuta el código dentro del bloque `else`.
+
+**15. `body.classList.remove('mode-oscuro');` y `body.classList.add('modo-claro');`**
+
+- Se eliminan y se agregan las clases CSS de manera similar a los pasos 11 y 12.
+
+**16. `titulo.classList.remove('mode-oscuro');` y `caja.classList.remove('mode-oscuro');`**
+
+- Se eliminan las clases CSS de los elementos `titulo` y `caja`.
+
+En resumen, esta función cambia el tema de la página entre claro y oscuro, agregando o eliminando las clases CSS correspondientes a los elementos `body`, `titulo` y `caja`.
+
+---
+
+### Eventos
+
+https://www.w3schools.com/tags/ref_eventattributes.asp
+
+Los eventos en JavaScript HTML son "cosas" que suceden a los elementos HTML. Cuando se utiliza JavaScript en páginas HTML, JavaScript puede "reaccionar" a estos eventos. Estos eventos pueden ser desencadenados por diversas interacciones del usuario o por el propio navegador. Por ejemplo, cuando un usuario hace clic en un botón, se desencadena el evento `onclick`. A continuación, te presento algunos eventos HTML comunes:
+
+#### Eventos HTML comunes
+
+| Atributos   | Descripción                                         |
+| ----------- | --------------------------------------------------- |
+| onchange    | Un elemento HTML ha sido modificado                 |
+| onclick     | El usuario hace clic en un elemento HTML            |
+| onmouseover | El usuario mueve el ratón sobre un elemento HTML    |
+| onmouseout  | El usuario mueve el ratón fuera de un elemento HTML |
+| onkeydown   | El usuario presiona una tecla del teclado           |
+| onload      | El navegador ha terminado de cargar la página       |
+| onsubmit    | El usuario envía un formulario                      |
+| onfocus     | Un elemento obtiene el foco                         |
+| onblur      | Un elemento pierde el foco                          |
+
+#### Asignar eventos utilizando HTML
+
+Puedes asignar eventos a elementos HTML utilizando atributos de evento HTML. Por ejemplo, puedes agregar un atributo `onclick` a un elemento `<button>`:
+
+```html
+<button onclick="alert('Hola')">Haz clic en mí</button>
+```
+
+#### Asignar eventos utilizando JavaScript
+
+También puedes asignar eventos a elementos HTML utilizando JavaScript. Por ejemplo, puedes utilizar el método `addEventListener` para agregar un oyente de eventos a un elemento `<button>`:
+
+```js
+let button = document.getElementById('myButton');
+button.addEventListener('click', function() {
+    alert('Hola');
+});
+```
+
+#### Manejadores de eventos
+
+Los manejadores de eventos son funciones que se ejecutan en respuesta a eventos específicos que ocurren en el navegador. Pueden estar adjuntos a elementos HTML utilizando atributos de evento como `onclick`, `onmouseover`, etc., o agregados dinámicamente utilizando el método `addEventListener` en JavaScript.
+
+Aquí te muestro un ejemplo de un manejador de eventos JavaScript adjunto a un elemento de botón HTML utilizando el atributo `onclick`:
+
+```
+htmlEditRunCopy code1<button onclick="miFuncion()">Haz clic en mí</button>
+2
+3<script>
+4    function miFuncion() {
+5        alert("¡Botón pulsado! ");
+6    }
+7</script>
+```
+
+---
+
+### API
+
+[JSONPlaceholder - Free Fake REST API (typicode.com)](https://jsonplaceholder.typicode.com/)
+
+Un JSON (JavaScript Object Notation) y un HTML (HyperText Markup Language) son dos tecnologías diferentes utilizadas en el desarrollo web.
+
+**JSON** es un formato de intercambio de datos ligero y fácil de leer que se utiliza para representar datos estructurados. Se utiliza comúnmente para intercambiar datos entre servidores web, aplicaciones móviles y aplicaciones web. Un archivo JSON se compone de pares clave-valor, arrays y objetos, y se puede leer y escribir fácilmente en la mayoría de los lenguajes de programación.
+
+Por ejemplo, un objeto JSON simple podría ser:
+
+```json
+{
+  "nombre": "Juan",
+  "edad": 30,
+  "ciudad": "Madrid"
+}
+```
+
+**HTML**, por otro lado, es un lenguaje de marcado utilizado para crear páginas web. Se utiliza para definir la estructura y el contenido de una página web, incluyendo texto, imágenes, enlaces, formularios, etc. El HTML se utiliza para crear la estructura básica de una página web, mientras que el CSS (Cascading Style Sheets) se utiliza para definir la presentación visual.
+
+Por ejemplo, un ejemplo simple de código HTML podría ser:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mi página web</title>
+</head>
+<body>
+  <h1>Bienvenido a mi página web</h1>
+  <p>Esta es una página web de ejemplo.</p>
+</body>
+</html>
+```
+
+En resumen, JSON se utiliza para intercambiar datos, mientras que HTML se utiliza para crear la estructura y el contenido de una página web.
+
+---
+
+### Métodos de Optimización
+
+Para optimizar el rendimiento de páginas JavaScript, existen varios métodos que se pueden utilizar. Uno de ellos es minimizar el código JavaScript, lo que reduce la cantidad de bytes que se deben descargar y procesar. Otro método es utilizar directivas como `preload`, `prefetch` y `preconnect` para ayudar al navegador a optimizar la carga de recursos.
+
+#### Uso de MutationObserver
+
+Otro método es utilizar `MutationObserver` para detectar automáticamente cuándo los fragmentos de código son insertados en la página y resaltarlos. Esto se puede lograr mediante el siguiente código:
+
+```
+javascriptEditCopy code1let observer = new MutationObserver(mutations => {
+2  for (let mutation of mutations) {
+3    // examine nodos nuevos, ¿hay algo para resaltar?
+4    for (let node of mutation.addedNodes) {
+5      // seguimos elementos solamente, saltamos los otros nodos (es decir nodos de texto)
+6      if (!(node instanceof HTMLElement)) continue;
+7      // verificamos que el elemento insertado sea un fragmento de código
+8      if (node.matches('pre[class*="language-"]')) {
+9        Prism.highlightElement(node);
+10      }
+11      // ¿o tal vez haya un fragmento de código en su sub-árbol?
+12      for (let elem of node.querySelectorAll('pre[class*="language-"]')) {
+13        Prism.highlightElement(elem);
+14      }
+15    }
+16  }
+17});
+18
+19let demoElem = document.getElementById('highlight-demo');
+20observer.observe(demoElem, { childList: true, subtree: true });
+```
+
+Este código crea un `MutationObserver` que observa el elemento con el id `highlight-demo` y resalta cualquier fragmento de código que aparezca en él.
+
+#### Otros métodos de optimización
+
+Otros métodos de optimización incluyen:
+
+- Reducir el tamaño de los archivos JavaScript
+- Utilizar mecanismos de compresión de recursos como Gzip o Brotli
+- Utilizar Web workers para ejecutar tareas asíncronas
+- Utilizar los atributos `defer` o `async` en los tag de script para permitir que el navegador continúe cargando la página mientras se carga el script
+
+#### **Fragmentos**
+
+Cuando me refiero a "fragmentos" en el contexto de optimización de páginas JavaScript, me refiero a pequeñas secciones de código JavaScript que se cargan dinámicamente en una página web. Estos fragmentos pueden ser:
+
+1. **Código JavaScript inline**: pequeñas secciones de código JavaScript que se encuentran directamente en el HTML, generalmente dentro de un elemento `<script>`.
+2. **Código JavaScript dinámico**: secciones de código JavaScript que se cargan dinámicamente en la página mediante técnicas como Ajax, JSONP o mediante la carga de módulos JavaScript.
+3. **Fragmentos de código de bibliotecas**: pequeñas secciones de código JavaScript que se cargan desde bibliotecas externas, como jQuery, Lodash, o Prism (como en el ejemplo que te proporcioné).
+
+Estos fragmentos de código pueden ser cargados en diferentes momentos durante la carga de la página, lo que puede afectar el rendimiento de la página. Algunos ejemplos de fragmentos de código que pueden ser cargados dinámicamente son:
+
+- Un widget de comentarios que se carga después de que el usuario hace clic en un botón.
+- Un gráfico que se carga después de que el usuario selecciona una opción en un menú desplegable.
+- Un formulario que se carga después de que el usuario hace clic en un enlace.
+
+Al optimizar la carga de estos fragmentos de código, podemos mejorar el rendimiento de la página y reducir el tiempo de carga.
+
 
 ----
 
@@ -2091,3 +4017,6 @@ En resumen, `Map` es una estructura de datos poderosa que proporciona una forma 
 - [mouredev/hello-javascript: Curso para aprender el lenguaje de programación JavaScript desde cero y para principiantes. (github.com)](https://github.com/mouredev/hello-javascript)
 - [Learn JavaScript  | web.dev](https://web.dev/learn/javascript)
 - [The Modern JavaScript Tutorial](https://javascript.info/)
+
+---
+
