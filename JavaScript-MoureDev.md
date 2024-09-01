@@ -3170,6 +3170,303 @@ En resumen, `Map` es una estructura de datos poderosa que proporciona una forma 
 
 ---
 
+### Storage
+
+**¿Qué son SessionStorage y LocalStorage?**
+
+SessionStorage y LocalStorage son dos tipos de almacenamiento web que permiten a los desarrolladores web almacenar datos en el lado del cliente, es decir, en el navegador del usuario. Estos datos se almacenan en forma de clave-valor y se pueden acceder y manipular utilizando JavaScript.
+
+**Diferencias entre SessionStorage y LocalStorage**
+
+La principal diferencia entre SessionStorage y LocalStorage es la duración de la vida de los datos almacenados:
+
+- **SessionStorage**: Los datos almacenados en SessionStorage se eliminan cuando el usuario cierra la sesión actual (es decir, cuando cierra el navegador o la pestaña). Los datos se almacenan solo durante la sesión actual y no se conservan entre sesiones.
+- **LocalStorage**: Los datos almacenados en LocalStorage se conservan incluso después de que el usuario cierra el navegador o la pestaña. Los datos se almacenan de forma permanente en el navegador del usuario, a menos que se eliminen explícitamente.
+
+##### Métodos
+
+**SessionStorage**
+
+- **setItem(key, value)**: Almacena un valor en SessionStorage con una clave específica.
+- **getItem(key)**: Recupera el valor almacenado en SessionStorage con una clave específica.
+- **removeItem(key)**: Elimina el valor almacenado en SessionStorage con una clave específica.
+- **clear()**: Elimina todos los valores almacenados en SessionStorage.
+
+Ejemplo:
+
+```js
+// Almacenar un valor en SessionStorage
+sessionStorage.setItem('nombre', 'Juan');
+
+// Recuperar un valor de SessionStorage
+console.log(sessionStorage.getItem('nombre')); // Output: Juan
+
+// Eliminar un valor de SessionStorage
+sessionStorage.removeItem('nombre');
+
+// Eliminar todos los valores de SessionStorage
+sessionStorage.clear();
+```
+
+**LocalStorage**
+
+- **setItem(key, value)**: Almacena un valor en LocalStorage con una clave específica.
+- **getItem(key)**: Recupera el valor almacenado en LocalStorage con una clave específica.
+- **removeItem(key)**: Elimina el valor almacenado en LocalStorage con una clave específica.
+- **clear()**: Elimina todos los valores almacenados en LocalStorage.
+
+Ejemplo:
+
+```js
+// Almacenar un valor en LocalStorage
+localStorage.setItem('apellido', 'Pérez');
+
+// Recuperar un valor de LocalStorage
+console.log(localStorage.getItem('apellido')); // Output: Pérez
+
+// Eliminar un valor de LocalStorage
+localStorage.removeItem('apellido');
+
+// Eliminar todos los valores de LocalStorage
+localStorage.clear();
+```
+
+**Ventajas y desventajas**
+
+Ventajas:
+
+- Permite almacenar datos en el lado del cliente, lo que reduce la carga en el servidor.
+- Permite acceder a los datos almacenados en cualquier momento, sin necesidad de realizar una solicitud al servidor.
+- Es una forma segura de almacenar datos, ya que los datos se almacenan en el navegador del usuario y no se envían al servidor.
+
+Desventajas:
+
+- los datos almacenados en SessionStorage y LocalStorage solo pueden guardar strings (no objetos)
+- Los datos almacenados en SessionStorage y LocalStorage no son persistentes, es decir, se eliminan cuando el usuario cierra el navegador o la pestaña.
+- Los datos almacenados en SessionStorage y LocalStorage no se pueden compartir entre diferentes sitios web o aplicaciones.
+- Los datos almacenados en SessionStorage y LocalStorage pueden ser eliminados por el usuario o por el navegador.
+
+En resumen, SessionStorage y LocalStorage son dos formas de almacenar datos en el lado del cliente, con SessionStorage siendo una forma temporal y LocalStorage siendo una forma permanente. Ambas formas tienen sus ventajas y desventajas, y se deben utilizar según las necesidades específicas de la aplicación.
+
+#### Recorrer el Storage
+
+Es posible obtener todos los valores almacenados en localStorage o sessionStorage con un bucle. Pero no podemos usar for...of porque no son objetos iterables, ni for...in porque obtenemos otras propiedades del objeto que no son valores almacenados. El bucle a emplear es for con el método key.
+
+````js
+//Ciclo para recorrer las claves almacenadas en el objeto localStorage
+for (let i = 0; i < localStorage.length; i++) {
+    let clave = localStorage.key(i);
+    console.log("Clave: "+ clave);
+    console.log("Valor: "+ localStorage.getItem(clave));
+}
+````
+
+#### Eliminar Datos
+
+Podemos eliminar la información almacenada en sessionStorage o localStorage usando el método removeItem o clear:
+
+````js
+localStorage.setItem('bienvenida', '¡Hola Code!');
+sessionStorage.setItem('esValido', true);
+
+localStorage.removeItem('bienvenida');
+sessionStorage.removeItem('esValido');
+localStorage.clear()    //elimina toda la información
+sessionStorage.clear() //elimina toda la información
+
+````
+
+#### Ejemplos
+
+##### Ejemplo: Almacenar Tabla de multiplicar
+
+````js
+const multiplicar  = (a, b) => a * b;
+const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) };
+
+// Solicitamos un valor al usuario
+let ingresarNumero = parseInt(prompt("Ingresar Numero"));
+// En cada repetición calculamos el número ingresado por el número de repetición (i)
+for (let i = 1; i <= 10; i++) {
+    guardarLocal(i,multiplicar( parseInt(ingresarNumero),i));
+
+````
+
+##### Ejemplo: Selección de tema de la página
+
+- Inicialmente:
+
+![image-20240828082801243](C:\Users\ribas\AppData\Roaming\Typora\typora-user-images\image-20240828082801243.png)
+
+````js
+let theme = localStorage.getItem('theme')
+console.log(theme)
+if(!theme){
+    theme = prompt('Seleccione un tema:\n-blanco\n-oscuro')
+    /* Si quieren validan */
+    localStorage.setItem('theme', theme)
+}
+````
+
+En el code se guarda el tema de la pagina en el localStorage.
+
+![image-20240826113651451](C:\Users\ribas\AppData\Roaming\Typora\typora-user-images\image-20240826113651451.png)
+
+````js
+<!--Html-->
+<style>
+    .mode-oscuro{
+    	color: white;
+        background-color:black;
+    }
+    .modo-claro{
+        color: black;
+        background-color: white;
+    }
+</style>
+<body id="body">
+    
+<!--javaScript-->
+const body = document.getElementById('body')
+body.classList.add('mode-' + theme)// se llama a la lista de clases
+const cambiarTheme = () => {
+    theme = prompt('Seleccione un tema:\n-blanco\n-oscuro')
+    localStorage.setItem('theme', theme)
+    body.classList.add('mode-' + theme)
+}
+````
+
+Esta parte del code permite solicitar tipo de tema. Una ves guardado en el localStorage podemos traer 
+
+![image-20240828084129183](C:\Users\ribas\AppData\Roaming\Typora\typora-user-images\image-20240828084129183.png)
+
+---
+
+### JSON
+
+[JSONPlaceholder - Free Fake REST API (typicode.com)](https://jsonplaceholder.typicode.com/)
+
+**Almacenar Objetos en STORAGE**
+
+Si queremos almacenar la información de un objeto en un storage, hay que tener en cuenta que tanto la clave como el valor se almacenan en strings. Ante cualquier otro tipo a guardar, como un número o un objeto, se convierte a cadena de texto automáticamente. Entonces al buscar almacenar un objeto, sin una transformación previa, guardamos [object Object], la conversión por defecto de objeto a string. Para guardar la información correctamente hay que transformar el objeto a **JSON**.
+
+````js
+const producto1 = { id: 2, producto: "Arroz" };
+localStorage.setItem("producto1", producto1); // Se guarda [object Object]
+````
+
+#### *¿QUÉ ES JSON?*
+
+JavaScript Object Notation (JSON) es un **formato** **basado** **en** **texto** **plano**, para representar datos estructurados con la sintaxis de objetos de JavaScript. Es comúnmente utilizado para enviar y almacenar datos en aplicaciones web.
+
+Aunque es muy parecido (casi similar) a la sintaxis de JavaScript, puede ser utilizado independientemente de JavaScript, y muchos entornos de programación poseen la capacidad de leer (convertir; parsear) y generar JSON. **JSON es un string con un *formato* *específico*.**
+
+#### Conversiones De/Hacia JSON
+
+Cuando sea necesario enviar un objeto Javascript al servidor o almacenarlo en storage, será necesario convertirlo a un JSON (una cadena) antes de ser enviado.
+
+- stringify(): acepta un objeto como parámetro, y devuelve la forma de texto JSON equivalente.
+- parse(): recibe un texto JSON como parámetro, y devuelve el objeto JavaScript correspondiente.
+
+##### `stringify`: Con JSON.stringify podemos transformar un objeto JavaScript a un string en formato JSON. 
+
+````js
+const producto1 = { id: 2, producto: "Arroz" };
+const enJSON    = JSON.stringify(producto1);
+
+console.log(enJSON); // {"id":2,"producto":"Arroz"}
+console.log(typeof producto1); // object
+console.log(typeof enJSON);    // string
+
+localStorage.setItem("producto1", enJSON);
+// Se guarda {"id":2,"producto":"Arroz"}
+````
+
+##### `parse`: Con JSON.parse podemos transformar string en formato JSON a objeto JavaScript. 
+
+````js
+const enJSON    = '{"id":2,"producto":"Arroz"}';
+const producto1 = JSON.parse(enJSON);
+
+console.log(typeof enJSON);     // string
+console.log(typeof producto1);  // object
+console.log(producto1.producto); // Arroz
+
+const producto2 = JSON.parse(localStorage.getItem("producto1"));
+console.log(producto2.id);  // 2    
+````
+
+#### Ejemplos
+
+##### Ejemplo: Almacenar Array de objetos
+
+````js
+const productos = [{ id: 1,  producto: "Arroz", precio: 125 },
+                  {  id: 2,  producto: "Fideo", precio: 70 },
+                  {  id: 3,  producto: "Pan"  , precio: 50},
+                  {  id: 4,  producto: "Flan" , precio: 100}];
+
+const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) };
+
+//Almacenar producto por producto
+for (const producto of productos) {
+    guardarLocal(producto.id, JSON.stringify(producto));
+}
+// o almacenar array completo
+guardarLocal("listaProductos", JSON.stringify(productos));
+
+````
+
+> listaProductos (JSON)
+
+![image-20240901091158412](C:\Users\ribas\AppData\Roaming\Typora\typora-user-images\image-20240901091158412.png)
+
+![image-20240901091351278](C:\Users\ribas\AppData\Roaming\Typora\typora-user-images\image-20240901091351278.png)
+
+````js
+class Producto {
+    constructor(obj) {
+        this.nombre  = obj.producto.toUpperCase(); // Nombres en MAYúSCULA
+        this.precio  = parseFloat(obj.precio); // Precio más IVA
+    }
+    sumaIva() {
+        this.precio = this.precio * 1.21;
+    }
+}
+//Obtenemos el listado de productos almacenado
+const almacenados = JSON.parse(localStorage.getItem("listaProductos"));
+const productos = [];
+//Iteramos almacenados con for...of para transformar todos sus objetos a tipo producto.
+for (const objeto of almacenados)
+    productos.push(new Producto(objeto));
+//Ahora tenemos objetos productos y podemos usar sus métodos
+for (const producto of productos)
+    producto.sumaIva();
+````
+
+![image-20240901090840565](C:\Users\ribas\AppData\Roaming\Typora\typora-user-images\image-20240901090840565.png)
+
+#### Manejo del Archivo JSON
+
+- Las datos en formato JSON se pueden almacenar en archivos externos .json. Exemplo: datos.json
+- JSON es sólo un formato de datos — contiene sólo propiedades, no métodos.
+- Una coma o dos puntos mal ubicados pueden producir que un archivo JSON no funcione. Se debe ser cuidadoso para validar cualquier dato que se quiera utilizar. https://jsonformatter.curiousconcept.com/
+- A diferencia del código JavaScript en que las propiedades del objeto pueden no estar entre comillas, en JSON sólo las cadenas entre comillas pueden ser utilizadas como propiedades.
+
+#### Recursos:
+
+- LocalStorage, sessionStorage |  **[Javascript.info](https://es.javascript.info/localstorage)**
+- JSON |  **[GitBooks](https://josh1982.gitbooks.io/programacion-web-en-cliente/content/el_formato_json.html)**
+  - [El ](https://josh1982.gitbooks.io/programacion-web-en-cliente/content/el_formato_json.html)[formato](https://josh1982.gitbooks.io/programacion-web-en-cliente/content/el_formato_json.html)[ JSON](https://josh1982.gitbooks.io/programacion-web-en-cliente/content/el_formato_json.html)
+  - [JSON Formatter](https://jsonformatter.curiousconcept.com/)
+- [Generador](https://www.mockaroo.com/)[ JSON](https://www.mockaroo.com/)
+- Documentación |  
+  - [Documentación](https://developer.mozilla.org/es/docs/Web/API/Window/localStorage)[ ](https://developer.mozilla.org/es/docs/Web/API/Window/localStorage)[localStorage](https://developer.mozilla.org/es/docs/Web/API/Window/localStorage)
+  - [Documentación](https://developer.mozilla.org/es/docs/Web/API/Window/sessionStorage)[ ](https://developer.mozilla.org/es/docs/Web/API/Window/sessionStorage)[sessioStorage](https://developer.mozilla.org/es/docs/Web/API/Window/sessionStorage)
+  - [Documentación](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/JSON)[ JSON](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/JSON)**
+
+---
+
 ### DOM
 
 El DOM (Document Object Model) es una representación en memoria del documento HTML, que permite a los desarrolladores acceder y manipular los elementos del documento utilizando JavaScript.
@@ -3518,133 +3815,9 @@ document.querySelectorAll('div').forEach(element => {
 
 Recuerda que `querySelectorAll` devuelve una NodeList, que es una colección de elementos del DOM. Los métodos `forEach` y `for...of` son compatibles con NodeList.
 
-#### SessionStorage y LocalStorage
+---
 
-**¿Qué son SessionStorage y LocalStorage?**
-
-SessionStorage y LocalStorage son dos tipos de almacenamiento web que permiten a los desarrolladores web almacenar datos en el lado del cliente, es decir, en el navegador del usuario. Estos datos se almacenan en forma de clave-valor y se pueden acceder y manipular utilizando JavaScript.
-
-**Diferencias entre SessionStorage y LocalStorage**
-
-La principal diferencia entre SessionStorage y LocalStorage es la duración de la vida de los datos almacenados:
-
-- **SessionStorage**: Los datos almacenados en SessionStorage se eliminan cuando el usuario cierra la sesión actual (es decir, cuando cierra el navegador o la pestaña). Los datos se almacenan solo durante la sesión actual y no se conservan entre sesiones.
-- **LocalStorage**: Los datos almacenados en LocalStorage se conservan incluso después de que el usuario cierra el navegador o la pestaña. Los datos se almacenan de forma permanente en el navegador del usuario, a menos que se eliminen explícitamente.
-
-##### Métodos
-
-**SessionStorage**
-
-- **setItem(key, value)**: Almacena un valor en SessionStorage con una clave específica.
-- **getItem(key)**: Recupera el valor almacenado en SessionStorage con una clave específica.
-- **removeItem(key)**: Elimina el valor almacenado en SessionStorage con una clave específica.
-- **clear()**: Elimina todos los valores almacenados en SessionStorage.
-
-Ejemplo:
-
-```js
-// Almacenar un valor en SessionStorage
-sessionStorage.setItem('nombre', 'Juan');
-
-// Recuperar un valor de SessionStorage
-console.log(sessionStorage.getItem('nombre')); // Output: Juan
-
-// Eliminar un valor de SessionStorage
-sessionStorage.removeItem('nombre');
-
-// Eliminar todos los valores de SessionStorage
-sessionStorage.clear();
-```
-
-**LocalStorage**
-
-- **setItem(key, value)**: Almacena un valor en LocalStorage con una clave específica.
-- **getItem(key)**: Recupera el valor almacenado en LocalStorage con una clave específica.
-- **removeItem(key)**: Elimina el valor almacenado en LocalStorage con una clave específica.
-- **clear()**: Elimina todos los valores almacenados en LocalStorage.
-
-Ejemplo:
-
-```js
-// Almacenar un valor en LocalStorage
-localStorage.setItem('apellido', 'Pérez');
-
-// Recuperar un valor de LocalStorage
-console.log(localStorage.getItem('apellido')); // Output: Pérez
-
-// Eliminar un valor de LocalStorage
-localStorage.removeItem('apellido');
-
-// Eliminar todos los valores de LocalStorage
-localStorage.clear();
-```
-
-**Ventajas y desventajas**
-
-Ventajas:
-
-- Permite almacenar datos en el lado del cliente, lo que reduce la carga en el servidor.
-- Permite acceder a los datos almacenados en cualquier momento, sin necesidad de realizar una solicitud al servidor.
-- Es una forma segura de almacenar datos, ya que los datos se almacenan en el navegador del usuario y no se envían al servidor.
-
-Desventajas:
-
-- los datos almacenados en SessionStorage y LocalStorage solo pueden guardar strings (no objetos)
-- Los datos almacenados en SessionStorage y LocalStorage no son persistentes, es decir, se eliminan cuando el usuario cierra el navegador o la pestaña.
-- Los datos almacenados en SessionStorage y LocalStorage no se pueden compartir entre diferentes sitios web o aplicaciones.
-- Los datos almacenados en SessionStorage y LocalStorage pueden ser eliminados por el usuario o por el navegador.
-
-En resumen, SessionStorage y LocalStorage son dos formas de almacenar datos en el lado del cliente, con SessionStorage siendo una forma temporal y LocalStorage siendo una forma permanente. Ambas formas tienen sus ventajas y desventajas, y se deben utilizar según las necesidades específicas de la aplicación.
-
-##### Ejemplo: Selección de tema de la página
-
-- Inicialmente:
-
-![image-20240828082801243](C:\Users\ribas\AppData\Roaming\Typora\typora-user-images\image-20240828082801243.png)
-
-````js
-let theme = localStorage.getItem('theme')
-console.log(theme)
-if(!theme){
-    theme = prompt('Seleccione un tema:\n-blanco\n-oscuro')
-    /* Si quieren validan */
-    localStorage.setItem('theme', theme)
-}
-````
-
-En el code se guarda el tema de la pagina en el localStorage.
-
-![image-20240826113651451](C:\Users\ribas\AppData\Roaming\Typora\typora-user-images\image-20240826113651451.png)
-
-````js
-<!--Html-->
-<style>
-    .mode-oscuro{
-    	color: white;
-        background-color:black;
-    }
-    .modo-claro{
-        color: black;
-        background-color: white;
-    }
-</style>
-<body id="body">
-    
-<!--javaScript-->
-const body = document.getElementById('body')
-body.classList.add('mode-' + theme)// se llama a la lista de clases
-const cambiarTheme = () => {
-    theme = prompt('Seleccione un tema:\n-blanco\n-oscuro')
-    localStorage.setItem('theme', theme)
-    body.classList.add('mode-' + theme)
-}
-````
-
-Esta parte del code permite solicitar tipo de tema. Una ves guardado en el localStorage podemos traer 
-
-![image-20240828084129183](C:\Users\ribas\AppData\Roaming\Typora\typora-user-images\image-20240828084129183.png)
-
-#### classList
+### classList
 
 La propiedad `classList` es una forma conveniente de trabajar con las clases CSS de un elemento en JavaScript. Aquí te presento algunos otros métodos y propiedades que se pueden aplicar:
 
@@ -3908,46 +4081,6 @@ htmlEditRunCopy code1<button onclick="miFuncion()">Haz clic en mí</button>
 ```
 
 ---
-
-### API
-
-[JSONPlaceholder - Free Fake REST API (typicode.com)](https://jsonplaceholder.typicode.com/)
-
-Un JSON (JavaScript Object Notation) y un HTML (HyperText Markup Language) son dos tecnologías diferentes utilizadas en el desarrollo web.
-
-**JSON** es un formato de intercambio de datos ligero y fácil de leer que se utiliza para representar datos estructurados. Se utiliza comúnmente para intercambiar datos entre servidores web, aplicaciones móviles y aplicaciones web. Un archivo JSON se compone de pares clave-valor, arrays y objetos, y se puede leer y escribir fácilmente en la mayoría de los lenguajes de programación.
-
-Por ejemplo, un objeto JSON simple podría ser:
-
-```json
-{
-  "nombre": "Juan",
-  "edad": 30,
-  "ciudad": "Madrid"
-}
-```
-
-**HTML**, por otro lado, es un lenguaje de marcado utilizado para crear páginas web. Se utiliza para definir la estructura y el contenido de una página web, incluyendo texto, imágenes, enlaces, formularios, etc. El HTML se utiliza para crear la estructura básica de una página web, mientras que el CSS (Cascading Style Sheets) se utiliza para definir la presentación visual.
-
-Por ejemplo, un ejemplo simple de código HTML podría ser:
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Mi página web</title>
-</head>
-<body>
-  <h1>Bienvenido a mi página web</h1>
-  <p>Esta es una página web de ejemplo.</p>
-</body>
-</html>
-```
-
-En resumen, JSON se utiliza para intercambiar datos, mientras que HTML se utiliza para crear la estructura y el contenido de una página web.
-
----
-
 ### Métodos de Optimización
 
 Para optimizar el rendimiento de páginas JavaScript, existen varios métodos que se pueden utilizar. Uno de ellos es minimizar el código JavaScript, lo que reduce la cantidad de bytes que se deben descargar y procesar. Otro método es utilizar directivas como `preload`, `prefetch` y `preconnect` para ayudar al navegador a optimizar la carga de recursos.
