@@ -3469,27 +3469,7 @@ for (const producto of productos)
 
 ### DOM
 
-El DOM (Document Object Model) es una representación en memoria del documento HTML, que permite a los desarrolladores acceder y manipular los elementos del documento utilizando JavaScript.
-
-Cuando un navegador carga un documento HTML, crea un objeto en memoria que representa la estructura del documento, incluyendo todos los elementos HTML, sus atributos y contenido. Este objeto se conoce como el DOM.
-
-El DOM es una interfaz de programación que permite a los desarrolladores acceder y manipular los elementos del documento utilizando métodos y propiedades. De esta manera, los desarrolladores pueden crear scripts que interactúen con el documento, como por ejemplo:
-
-- Agregar o eliminar elementos del documento
-- Modificar el contenido o los atributos de los elementos
-- Agregar eventos a los elementos para responder a acciones del usuario
-- Realizar búsquedas y selecciones de elementos en el documento
-
-El DOM es una parte fundamental de la programación web, ya que permite a los desarrolladores crear aplicaciones web dinámicas y interactivas.
-
-Algunos conceptos clave relacionados con el DOM son:
-
-- **Nodos**: Los elementos del documento se representan como nodos en el DOM. Cada nodo tiene una serie de propiedades y métodos que permiten acceder y manipular el elemento.
-- **Elementos**: Los elementos HTML se representan como nodos en el DOM. Cada elemento tiene una serie de propiedades y métodos que permiten acceder y manipular el elemento.
-- **Atributos**: Los atributos de los elementos HTML se representan como propiedades en el DOM.
-- **Eventos**: Los eventos se utilizan para responder a acciones del usuario, como clicks o cambios en los formularios.
-
-#### DOM HTML & JavaScript
+#### HTML & JavaScript
 
 La diferencia entre el DOM en HTML y JavaScript es fundamentalmente una cuestión de perspectiva y de cómo se accede y se manipula el DOM.
 
@@ -3528,39 +3508,153 @@ Cuando se ejecuta `console.dir(document)`, se muestra una representación en for
 - Verificar las propiedades y atributos de los elementos del documento
 - Depurar problemas relacionados con el acceso a elementos del documento
 
+#### DOM
+
+[Modelo de Objetos del Documento (DOM) - Referencia de la API Web | MDN (mozilla.org)](https://developer.mozilla.org/es/docs/Web/API/Document_Object_Model)
+
+El DOM (Document Object Model) es una representación en memoria del documento HTML, que permite a los desarrolladores acceder y manipular los elementos del documento utilizando JavaScript.
+
+Cuando un navegador carga un documento HTML, crea un objeto en memoria que representa la estructura del documento, incluyendo todos los elementos HTML, sus atributos y contenido. Este objeto se conoce como el DOM.
+
+El DOM es una interfaz de programación que permite a los desarrolladores acceder y manipular los elementos del documento utilizando métodos y propiedades. De esta manera, los desarrolladores pueden crear scripts que interactúen con el documento, como por ejemplo:
+
+- Agregar o eliminar elementos del documento
+- Modificar el contenido o los atributos de los elementos
+- Agregar eventos a los elementos para responder a acciones del usuario
+- Realizar búsquedas y selecciones de elementos en el documento
+
+El DOM es una parte fundamental de la programación web, ya que permite a los desarrolladores crear aplicaciones web dinámicas y interactivas.
+
+Algunos conceptos clave relacionados con el DOM son:
+
+- **Nodos**: Los elementos del documento se representan como nodos en el DOM. Cada nodo tiene una serie de propiedades y métodos que permiten acceder y manipular el elemento.
+- **Elementos**: Los elementos HTML se representan como nodos en el DOM. Cada elemento tiene una serie de propiedades y métodos que permiten acceder y manipular el elemento.
+- **Atributos**: Los atributos de los elementos HTML se representan como propiedades en el DOM.
+- **Eventos**: Los eventos se utilizan para responder a acciones del usuario, como clicks o cambios en los formularios.
+
+##### Como Funciona?
+
+La estructura de un documento HTML son las etiquetas.
+
+En el Modelo de Objetos del Documento (DOM), cada etiqueta HTML es un objeto, al que podemos llamar nodo. Las etiquetas anidadas son llamadas “nodos hijos” de la etiqueta “ nodo padre” que las contiene.
+
+Todos estos objetos son accesibles empleando JavaScript mediante el objeto global document 
+
+Por ejemplo, `document.body` es el nodo que representa la etiqueta <body>
+
+![image-20240901111923784](C:\Users\ribas\AppData\Roaming\Typora\typora-user-images\image-20240901111923784.png)
+
+> Herramienta: [Live DOM ](http://software.hixie.ch/utilities/js/live-dom-viewer/)[Viewer](http://software.hixie.ch/utilities/js/live-dom-viewer/)
+
+##### Estructura DOM
+
+- Cada etiqueta HTML se transforma en un nodo de tipo "Elemento". La conversión de etiquetas en nodos se realiza de forma jerárquica. 
+- De esta forma, del nodo raíz solamente pueden derivar los nodos HEAD y BODY. 
+- A partir de esta derivación inicial, cada etiqueta HTML se transforma en un nodo que deriva del correspondiente a su "etiqueta padre".
+
+La transformación de las etiquetas HTML habituales genera dos nodos: el primero es el nodo de tipo "Elemento" (correspondiente a la propia etiqueta XHTML) y el segundo es un nodo de tipo "Texto" que contiene el texto encerrado por esa etiqueta XHTML.
+
+````html
+<p>Esta página es <strong>muy sencilla</strong>.</p>
+````
+
+La etiqueta <p> se transforma en los siguientes nodos del DOM:
+
+<img src="C:\Users\ribas\AppData\Roaming\Typora\typora-user-images\image-20240901113202543.png" alt="image-20240901113202543" style="zoom:40%;" />
+
+> Herramienta: [DOM ](https://chrome.google.com/webstore/detail/dom-node-tree-viewer/jbplakkefflidgnjhckoahendgekokfc)[node](https://chrome.google.com/webstore/detail/dom-node-tree-viewer/jbplakkefflidgnjhckoahendgekokfc)[ ](https://chrome.google.com/webstore/detail/dom-node-tree-viewer/jbplakkefflidgnjhckoahendgekokfc)[tree](https://chrome.google.com/webstore/detail/dom-node-tree-viewer/jbplakkefflidgnjhckoahendgekokfc)[ ](https://chrome.google.com/webstore/detail/dom-node-tree-viewer/jbplakkefflidgnjhckoahendgekokfc)[viewer](https://chrome.google.com/webstore/detail/dom-node-tree-viewer/jbplakkefflidgnjhckoahendgekokfc)
+
+##### Editar el DOM desde el Navegador
+
+Los navegadores modernos brindan medios para editar el DOM de cualquier página en tiempo real. Por ejemplo en Chrome podemos hacerlo mediante la Herramienta para desarrolladores en la pestaña “Elements”.
+
+Si bien la estructura DOM está simplificada, es un medio muy útil para verificar y probar actualizaciones en la estructura.
+
+<img src="C:\Users\ribas\AppData\Roaming\Typora\typora-user-images\image-20240901115303047.png" alt="image-20240901115303047" style="zoom:150%;" />
+
+````html
+<html>
+	<head>
+        <title>Mi primer App</title>
+    </head>
+    <body>
+        <h2>Coder House 2</h2>
+        <p>Esta página es <strong>muy sencilla</strong>.</p>
+    </body>
+````
+
+> Referencia: [Editar el DOM](https://developers.google.com/web/tools/chrome-devtools/inspect-styles/edit-dom?hl=es) (Chrome)
+
+##### Ejemplo: Acceso por objeto document
+
+```` js
+console.dir(document);
+console.dir(document.head)
+console.dir(document.body);
+````
+
+El acceso a body usando la referencia document.body requiere que el script se incluya luego de <head> en el HTML
+
+````html
+<body>
+    <h2>Coder House</h2>
+    <script src="js/main.js"></script>
+</body>
+````
+
+##### Tipos de nodos
+
+La especificación completa de DOM define 12 tipos de nodos, aunque los más usados son:
+
+- Document, nodo raíz del que derivan todos los demás nodos del árbol.
+
+- Element, representa cada una de las etiquetas XHTML. Se trata del único nodo que puede contener atributos y el único del que pueden derivar otros nodos.
+
+- Attr, se define un nodo de este tipo para representar cada uno de los atributos de las etiquetas HTML, es decir, uno por cada par atributo=valor.
+
+- Text, nodo que contiene el texto encerrado por una etiqueta HTML.
+
+- Comment, representa los comentarios incluidos en la página HTML
+
 #### Métodos y propiedades
-
-Métodos y propiedades más empleados:
-
-- `document.getElementById()`: Devuelve un elemento con el ID especificado.
-- `document.querySelector()`: Devuelve el primer elemento que coincide con el selector especificado.
-- `element.innerHTML`: Establece o devuelve el contenido HTML de un elemento.
-- `element.addEventListener()`: Agrega un evento a un elemento.
-- `element.style`: Establece o devuelve el estilo CSS de un elemento.
-
-#### **Ejemplos de uso del DOM**
 
 1. `document.getElementById(id)`: devuelve el elemento con el id especificado.
 
 ````html
 <!-- HTML -->
-<div id="miId">Este es mi id</div>
-<div id="miDiv">Este es mi div</div>
+<div id = "app">
+	<p id = "parrafo1" >Hola Mundo</p>
+</div>
 ````
 
 ```js
-const elemento = document.getElementById('miId');
-console.log(elemento); // imprime el elemento con el id "miId"
-
-const elemento = document.getElementById('miId');
-elemento.innerHTML = '<p>Hola, mundo!</p>';
-
 <!-- JavaScript -->
-const miDiv = document.getElementById('miDiv');
-console.log(miDiv); // <div id="miDiv">Este es mi div</div>
+let div     = document.getElementById("app");
+let parrafo = document.getElementById("parrafo1");
+
+console.log(div.innerHTML); // <p id="parrafo1">Hola Mundo</p>
+console.log(parrafo.innerHTML); // Hola Mundo
 ```
 
+> El método getElementById() sirve para acceder a un elemento de la estructura HTML, utilizando su atributo ID como identificación. 
+>
+> La propiedad .innerHTML sirve para devolver el contenido dentro la etiqueta señalada. 
+>
 > si no se encuentra el id en HTML el cual llamamos desde JS, por console nos muestra un null sino el document del elemento que nombramos.
+
+- Agregar datos de inputs
+
+````html
+<!-- CODIGO HTML DE REFERENCIA -->
+<input id = "nombre" type="text">
+<input id = "edad"   type="number">
+````
+
+````js
+//CODIGO JS
+document.getElementById("nombre").value = "HOMERO";
+document.getElementById("edad").value   = 39; 
+````
 
 2. `document.getElementsByClassName(clase)`: devuelve una lista de elementos con la clase especificada.
 
@@ -3580,6 +3674,28 @@ const misDivs = document.getElementsByClassName('miClase');
 console.log(misDivs); // HTMLCollection [div.miClase, div.miClase]
 ```
 
+> El método getElementsByClassName() sirve para acceder a un conjunto de elementos de la estructura HTML, utilizando su atributo class como identificación. 
+
+- Se retornará un Array de elementos con todas las coincidencias:
+
+````html
+ <ul>
+    <li class="paises">AR</li>
+    <li class="paises">CL</li>
+ 	<li class="paises">UY</li>
+ </ul>
+````
+
+````js
+let paises = document.getElementsByClassName("paises");
+console.log(paises[0].innerHTML);	// AR
+console.log(paises[1].innerHTML);	// CL	
+console.log(paises[2].innerHTML);	// UY
+console.log(paises);	// [li.paises, li.paises, li.paises]
+console.log(paises[0]);	// <li class="paises">AR</li>
+
+````
+
 3. `document.getElementsByTagName(etiqueta)`: devuelve una lista de elementos con la etiqueta especificada.
 
 ````html
@@ -3593,8 +3709,11 @@ console.log(misDivs); // HTMLCollection [div.miClase, div.miClase]
 <!-- JavaScript -->
 const misParrafos = document.getElementsByTagName('p');
 console.log(misParrafos); // HTMLCollection [p, p]
-
+console.log(misParrafos[0].innerHTML);	// Este es mi párrafo 1
+console.log(misParrafos[1].innerHTML);	// Este es mi párrafo 2
 ````
+
+> El método getElementsByTagName() sirve para acceder a un conjunto de elementos de la estructura HTML, utilizando su nombre de etiqueta como identificación. Esta opción es la menos específica de todas, ya que es muy probable que las etiquetas se repitan en el código HTML.
 
 4. `document.querySelector(selector)`: devuelve el primer elemento que coincide con el selector CSS especificado.
 
@@ -3642,11 +3761,50 @@ elemento.addEventListener('click', function() {
 
 6. `document.createElement()`:
 
+````html
+<script src="script.js"></script>
+````
+
 ```js
 const nuevoElemento = document.createElement('p');
 nuevoElemento.textContent = 'Hola, mundo!';
 document.body.appendChild(nuevoElemento);
 ```
+
+>Para crear elementos se utiliza la función document.createElement(), y se debe indicar el nombre de etiqueta HTML que representará ese elemento.
+>
+>Luego debe agregarse como hijo el nodo creado con appendChild(), al body u a otro nodo del documento actual.
+
+````html
+// Elemento nuevo
+<script src="script.js"></script>
+<p>
+    <h2>¡Hola Coder!</h2>
+</p>
+````
+
+- `appendChild(new node)`: Se utiliza para agregar un nuevo nodo hijo a un elemento existente en el DOM.
+
+````js
+// Crear nodo de tipo Elemento, etiqueta p
+let parrafo = document.createElement("p");
+// Insertar HTML interno
+parrafo.innerHTML = "<h2>¡Hola Coder!</h2>"; 
+// Añadir el nodo Element como hijo de body
+document.body.appendChild(parrafo);
+````
+
+- `removeChild(node)`: Se pueden eliminar nodos existentes y nuevos. El método removeChild() permite eliminar nodos hijos a cualquier nodo con tan sólo pasarle las referencias del nodo hijo [a] eliminar y su correspondiente padre:
+
+````js
+let parrafo = document.getElementById("parrafo1");
+//Elminando el propio elemento, referenciando al padre
+parrafo.parentNode.removeChild(parrafo);
+
+let paises = document.getElementsByClassName("paises");
+//Eliminando el primer elemento de clase paises
+paises[0].parentNode.removeChild(paises[0])
+````
 
 7. `element.innerHTML`: devuelve o establece el contenido HTML del elemento. O sea, que lo interpreta el string y devolver hasta un elemento html.
 
@@ -3814,6 +3972,63 @@ document.querySelectorAll('div').forEach(element => {
 ```
 
 Recuerda que `querySelectorAll` devuelve una NodeList, que es una colección de elementos del DOM. Los métodos `forEach` y `for...of` son compatibles con NodeList.
+
+### Plantillas de Texto
+
+1. *Plantillas Literales*
+
+````js
+let producto = { id: 1,  nombre: "Arroz", precio: 125 };
+let concatenado = "ID : " + producto.id +" - Producto: " + producto.nombre + "$ "+producto.precio;
+let plantilla   = `ID: ${producto.id} - Producto ${producto.nombre} $ ${producto.precio}`;
+//El valor es idéntico pero la construcción de la plantilla es màs sencilla
+console.log(concatenado);
+console.log(plantilla);
+````
+
+Al momento de incluir valores de las variables en una cadena de caracteres (string) empleábamos la concatenación. Esta forma puede ser poco legible ante un gran número de referencias.*Un elemento incluido en JS ES6 que solventa esta situación son los* *templates* de *literales*.
+
+2. *Plantillas Literales e InnerHTML*
+
+````js
+let producto   = { id: 1,  nombre: "Arroz", precio: 125 };
+let contenedor = document.createElement("div");
+//Definimos el innerHTML del elemento con una plantilla de texto
+contenedor.innerHTML = `<h3> ID: ${producto.id}</h3>
+                        <p>  Producto: ${producto.nombre}</p>
+                        <b> $ ${producto.precio}</b>`;
+//Agregamos el contenedor creado al body
+document.body.appendChild(contenedor);
+````
+
+La plantillas son un medio para incluir variables en la estructura HTML de nodos nuevos o existentes , modificando el innerHTML
+
+#### Ejemplo aplicado
+
+````js
+const productos = [{ id: 1,  nombre: "Arroz", precio: 125 },
+                  {  id: 2,  nombre: "Fideo", precio: 70 },
+                  {  id: 3,  nombre: "Pan"  , precio: 50},
+                  {  id: 4,  nombre: "Flan" , precio: 100}];
+
+for (const producto of productos) {
+    let contenedor = document.createElement("div");
+    //Definimos el innerHTML del elemento con una plantilla de texto
+    contenedor.innerHTML = `<h3> ID: ${producto.id}</h3>
+                            <p>  Producto: ${producto.nombre}</p>
+                            <b> $ ${producto.precio}</b>`;
+    document.body.appendChild(contenedor);
+}
+````
+
+### Recursos
+
+- Ejemplos interactivos: DOM |
+  -  **[Árbol del Modelo de Objetos del Documento (DOM)](https://es.javascript.info/dom-nodes)** 
+  - **[Recorriendo el DOM](https://es.javascript.info/dom-navigation)**
+  - **[Propiedades de los nodos](https://es.javascript.info/basic-dom-node-properties)**
+
+- Documentación | **[Documentación DOM](https://developer.mozilla.org/es/docs/Referencia_DOM_de_Gecko/Introducción)**
 
 ---
 
@@ -4029,6 +4244,19 @@ En resumen, esta función cambia el tema de la página entre claro y oscuro, agr
 
 https://www.w3schools.com/tags/ref_eventattributes.asp
 
+**¿Qué es un evento?**
+
+Los eventos son la manera que tenemos en Javascript de controlar las acciones de los usuarios, y definir un comportamiento de la página o aplicación cuando se produzcan**.**
+
+Con Javascript podemos definir qué es lo que pasa cuando se produce un evento, cómo podría ser un clic en cierto elemento, o escribir en un campo.
+
+**¿Cómo Funciona?**
+
+JavaScript permite asignar una función a cada uno de los eventos. 
+ De esta forma, cuando se produce cualquier evento, JavaScript ejecuta su función asociada. Este tipo de funciones se denominan *event handlers* en inglés, y en castellano por "manejadores de eventos".
+
+Los eventos se asocian a cada elemento al cual se lo quiere "escuchar".
+
 Los eventos en JavaScript HTML son "cosas" que suceden a los elementos HTML. Cuando se utiliza JavaScript en páginas HTML, JavaScript puede "reaccionar" a estos eventos. Estos eventos pueden ser desencadenados por diversas interacciones del usuario o por el propio navegador. Por ejemplo, cuando un usuario hace clic en un botón, se desencadena el evento `onclick`. A continuación, te presento algunos eventos HTML comunes:
 
 #### Eventos HTML comunes
@@ -4057,6 +4285,11 @@ Puedes asignar eventos a elementos HTML utilizando atributos de evento HTML. Por
 
 También puedes asignar eventos a elementos HTML utilizando JavaScript. Por ejemplo, puedes utilizar el método `addEventListener` para agregar un oyente de eventos a un elemento `<button>`:
 
+````html
+//CODIGO HTML DE REFERENCIA
+<button id="myButton">CLICK</button>
+````
+
 ```js
 let button = document.getElementById('myButton');
 button.addEventListener('click', function() {
@@ -4068,17 +4301,148 @@ button.addEventListener('click', function() {
 
 Los manejadores de eventos son funciones que se ejecutan en respuesta a eventos específicos que ocurren en el navegador. Pueden estar adjuntos a elementos HTML utilizando atributos de evento como `onclick`, `onmouseover`, etc., o agregados dinámicamente utilizando el método `addEventListener` en JavaScript.
 
-Aquí te muestro un ejemplo de un manejador de eventos JavaScript adjunto a un elemento de botón HTML utilizando el atributo `onclick`:
+Ejemplos de manejo de eventos JavaScript adjunto a un elemento de botón HTML :
 
+````html
+<h2>Coder House</h2>
+<button id="btnPrincipal">CLICK</button>
+<script src="script.js"></script>
+````
+
+````js
+let boton = document.getElementById("btnPrincipal")
+boton.addEventListener("click", respuestaClick)
+
+function respuestaClick(){
+	console.log("Respuesta evento");
+ }
+````
+
+> El método addEventListener() permite definir qué evento escuchar sobre cualquier elemento en el código HTML.
+> El primer parámetro corresponde al nombre del evento y el segundo a la función de respuesta.
+
+````js
+  let boton = document.getElementById("btnPrincipal")
+  boton.onclick = () =>{console.log("Respuesta 2")}
+````
+
+> Emplear una propiedad del nodo para definir la respuesta al evento. Las propiedades se identifican con el nombre del evento y el prefijo *on.*También es posible emplear funciones anónimas para definir los manejadores de eventos.
+
+- utilizando el atributo `onclick`:
+
+````html
+<input type="button" value="CLICK2" onclick="alert('Respuesta 3');" />
+````
+
+> Determinar el evento especificando el manejador de evento en el atributo de una etiqueta HTML. La denominación del atributo es idéntica al de la propiedad de la opción 2 (prefijo *on*)
+>
+> La función puede declararse entre la comillas o bien tomarse una referencia existen en el script.
+
+````html
+<button onclick="miFuncion()">Haz clic en mí</button>
+````
+
+```js
+function miFuncion() {
+	alert("¡Botón pulsado! ");
+}
 ```
-htmlEditRunCopy code1<button onclick="miFuncion()">Haz clic en mí</button>
-2
-3<script>
-4    function miFuncion() {
-5        alert("¡Botón pulsado! ");
-6    }
-7</script>
-```
+
+**¿Cúal conviene usar?**
+
+Las opciones 1 y 2 son las recomendadas, si bien se pueden presentar casos de aplicación específico (por ejemplo, en la opción 1 el nombre del evento puede venir de una variable al usar la propiedad, y esto no puede hacerse en la 2), se identifican como formas de definición de evento equivalentes. 
+
+La opción 3, aunque es de fácil implementación, no es recomendada para proyectos en producción ya que no es considerada un buena práctica declarar funciones y código JavaScript dentro del HTML.
+
+#### Tipos de eventos
+
+##### Evento c/ Mouse
+
+Los eventos del mouse o MouseEvent son aquellos que se producen por la interacción del usuario con el mouse. Entre ellos destacamos:
+
+- mousedown/mouseup: Se oprime/suelta el botón del ratón sobre un elemento.
+- mouseover/mouseout: El puntero del mouse se mueve sobre/sale del elemento.
+- mousemove: El movimiento del mouse sobre el elemento activa el evento.
+- click: Se activa después de mousedown o mouseup sobre un elemento válido.
+
+````html
+//CODIGO HTML DE REFERENCIA
+<button id="btnMain">CLICK</button>
+````
+
+````js
+//CODIGO JS
+let boton         = document.getElementById("btnMain");
+boton.onclick     = () => {console.log("Click")};
+boton.onmousemove = () => {console.log("Move")}
+
+````
+
+##### Eventos c/ Teclado
+
+Los eventos de teclado o KeyboardEvent describen una interacción del usuario con el teclado son aquellos que se producen por la interacción del usuario con el teclado. Entre ellos destacamos:
+
+-	keydown: Cuando se presiona.
+-	keyup: Cuando se suelta una tecla.
+
+````html
+//CODIGO HTML DE REFERENCIA
+<input id = "nombre" type="text">
+<input id = "edad"   type="number">
+````
+
+````js
+//CODIGO JS
+let input1  = document.getElementById("nombre");
+let input2  = document.getElementById("edad");
+input1.onkeyup   = () => {console.log("keyUp")};
+input2.onkeydown = () => {console.log("keyDown")};
+````
+
+##### Evento Change
+
+El evento change se activa cuando se detecta un cambio en el valor del elemento. 
+
+Por ejemplo, mientras estamos escribiendo en un input de tipo texto, no hay evento change, pero cuando pasamos a otra sección de la aplicación entonces ocurre el evento *change.*
+
+````html
+//CODIGO HTML DE REFERENCIA
+<input id = "nombre" type="text">
+<input id = "edad"   type="number">
+
+````
+
+````js
+//CODIGO JS
+let input1  = document.getElementById("nombre");
+let input2  = document.getElementById("edad");
+input1.onchange = () => {console.log("valor1")};
+input2.onchange = () => {console.log("valor2")};
+````
+
+##### Evento Submit
+
+El evento submit se activa cuando el formulario es enviado, normalmente se utiliza para validar el formulario antes de ser enviado al servidor o bien para abortar el envío y procesarlo con JavaScript.
+
+````html
+//CODIGO HTML DE REFERENCIA
+ <form id="formulario">
+      <input type="text">
+      <input type="number">
+      <input type="submit" value="Enviar">
+ </form>
+````
+
+````js
+//CODIGO JS
+let miFormulario      = document.getElementById("formulario");
+miFormulario.addEventListener("submit", validarFormulario);
+
+function validarFormulario(e){
+    e.preventDefault();
+    console.log("Formulario Enviado");    
+}
+````
 
 ---
 ### Métodos de Optimización
